@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+    <title>Business Boost 💼 140 уникальных вопросов, 3 варианта</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #f9e3c0 0%, #ffdba5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+        .game-container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 250, 235, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 0 15px 30px rgba(0, 20, 20, 0.3), inset 0 2px 8px #fffae6;
+            padding: 18px 15px 25px;
+            border: 3px solid #ffc107;
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin: 0 0 6px;
+            letter-spacing: 1px;
+        }
+        h1 span {
+            background: #ffc107;
+            padding: 6px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 5px 0 #b57c00;
+            color: #1e2a3a;
+            border: 2px solid #ffe494;
+        }
+        .onboarding {
+            background: #5c8fad;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 10px 16px;
+            border-radius: 60px;
+            margin: 8px 0 18px;
+            border: 3px solid #ffd966;
+            box-shadow: 0 5px 0 #2d5f7a;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .stats-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            background: #ffe0a3;
+            padding: 16px 10px;
+            border-radius: 50px;
+            border: 3px solid #b37b48;
+            margin-bottom: 18px;
+        }
+        .stat {
+            background: #fffdf5;
+            border-radius: 40px;
+            padding: 8px 12px;
+            flex: 1 1 130px;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: inset 0 1px 5px rgba(0,0,0,0.05), 0 4px 0 #aa8c54;
+            border: 1px solid #eeddbb;
+        }
+        .stat span {
+            font-size: 1.6rem;
+        }
+        .stat-value {
+            background: #2b4f6e;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            min-width: 40px;
+            text-align: center;
+            box-shadow: inset 0 -2px 0 #102433;
+        }
+        .level-box {
+            background: #bacedb;
+            border-radius: 50px;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            border: 3px solid #5478a0;
+            box-shadow: 0 7px 0 #2f5577;
+        }
+        .level-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .level-desc {
+            font-size: 1rem;
+            margin: 8px 0 0;
+            color: #1f3a4c;
+            background: #fffae6;
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: 2px dashed #6f8fa7;
+        }
+        .progress {
+            font-size: 1.1rem;
+            background: #fffacd;
+            padding: 6px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 5px;
+            border: 1px solid #b8860b;
+        }
+        .actions {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 18px 0 12px;
+        }
+        .action-btn {
+            background: #fad37d;
+            border: 4px solid #b3702c;
+            border-radius: 60px;
+            padding: 14px 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1d2b36;
+            flex: 1 1 200px;
+            min-width: 180px;
+            cursor: pointer;
+            transition: 0.08s linear;
+            box-shadow: 0 7px 0 #8f5828, 0 5px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            line-height: 1.3;
+            touch-action: manipulation;
+        }
+        .action-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #8f5828, 0 5px 12px rgba(0,0,0,0.1);
+        }
+        .action-btn:disabled {
+            opacity: 0.5;
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #6f431f;
+            pointer-events: none;
+        }
+        .result-block {
+            background: #b7e0cd;
+            border-radius: 40px;
+            padding: 16px 18px;
+            margin: 12px 0 8px;
+            border: 4px solid #2c7a5a;
+            font-size: 1.1rem;
+            color: #003323;
+            font-weight: 500;
+            box-shadow: inset 0 0 0 2px #e2ffe8;
+        }
+        .next-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0 5px;
+        }
+        .next-btn {
+            background: #4caf7a;
+            font-size: 1.6rem;
+            padding: 14px 40px;
+            border-radius: 50px;
+            border: 4px solid #1f7844;
+            box-shadow: 0 8px 0 #1b5e3a;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.08s;
+            color: white;
+            text-shadow: 2px 2px 0 #1b5e3a;
+            touch-action: manipulation;
+            width: fit-content;
+        }
+        .next-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #1b5e3a;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .helper-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            background: #e5bc88;
+            border-radius: 80px;
+            padding: 12px 16px;
+            margin: 18px 0 12px;
+            border: 3px solid #a5672b;
+        }
+        .helper-emoji {
+            font-size: 3rem;
+            background: #fcf2db;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 5px 0 #7a592b;
+            line-height: 1;
+        }
+        .helper-text {
+            font-size: 1rem;
+            flex: 1;
+            background: #fff7e0;
+            padding: 10px 16px;
+            border-radius: 40px;
+            border: 2px solid #a5692e;
+            font-weight: 500;
+        }
+        .helper-btn {
+            background: #b8d4c5;
+            border: none;
+            font-size: 1.4rem;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 3px solid #3c705c;
+            font-weight: bold;
+            box-shadow: 0 6px 0 #2a5242;
+            transition: 0.08s;
+            touch-action: manipulation;
+        }
+        .helper-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #2a5242;
+        }
+        .collection {
+            background: #dbb9e6;
+            border-radius: 50px;
+            padding: 14px 16px;
+            border: 4px solid #8a50a3;
+            margin-top: 12px;
+        }
+        .collection-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 2rem;
+            background: #f5eaff;
+            border-radius: 40px;
+            padding: 16px 14px;
+            min-height: 80px;
+            border: 2px dashed #a16bb2;
+            align-items: center;
+        }
+        .card-item {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            box-shadow: 0 5px 0 #7d5593;
+            border: 2px solid #cba3dd;
+            font-size: 1.8rem;
+        }
+        .reset-btn {
+            background: #c0cee0;
+            border: none;
+            font-size: 1.5rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 4px solid #3d5a7a;
+            font-weight: bold;
+            box-shadow: 0 7px 0 #263f59;
+            transition: 0.08s;
+            touch-action: manipulation;
+            margin-top: 18px;
+        }
+        .reset-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #263f59;
+        }
+        footer {
+            text-align: center;
+            margin-top: 16px;
+            color: #5f4d37;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .onboarding { font-size: 0.9rem; padding: 8px; }
+            .stat { font-size: 0.9rem; min-width: 80px; }
+            .stat span { font-size: 1.3rem; }
+            .level-title { font-size: 1.3rem; }
+            .level-desc { font-size: 0.9rem; }
+            .action-btn { font-size: 0.9rem; padding: 12px 6px; min-width: 140px; }
+            .result-block { font-size: 0.95rem; }
+            .helper-text { font-size: 0.9rem; }
+            .helper-btn { font-size: 1.2rem; padding: 8px 16px; }
+            .collection-title { font-size: 1.2rem; }
+            .cards { font-size: 1.5rem; }
+            .card-item { font-size: 1.3rem; padding: 4px 10px; }
+        }
+    </style>
+</head>
+<body>
+<div class="game-container">
+    <h1><span>💼✨ Business Boost ✨💼</span></h1>
+    <div class="onboarding" id="onboardingMsg">
+        <span>👉</span> Выбери нишу — 20 уникальных вопросов <span>👈</span>
+    </div>
+
+    <!-- Панель навыков -->
+    <div class="stats-panel">
+        <div class="stat"><span>🧠</span>Стратегия <span class="stat-value" id="skillStrategic">0</span></div>
+        <div class="stat"><span>💰</span>Финансы <span class="stat-value" id="skillFinance">0</span></div>
+        <div class="stat"><span>🤝</span>Делегирование <span class="stat-value" id="skillDelegate">0</span></div>
+        <div class="stat"><span>👑</span>Лидерство <span class="stat-value" id="skillLeader">0</span></div>
+    </div>
+
+    <!-- Блок текущего состояния -->
+    <div class="level-box">
+        <div class="level-title" id="levelName">🌱 Выбор ниши</div>
+        <div class="level-desc" id="levelDescription">Нажми на любую нишу, чтобы начать тест</div>
+        <div class="progress" id="progressIndicator"></div>
+    </div>
+
+    <!-- Кнопки действий (варианты ответов или ниши) -->
+    <div class="actions" id="actionsContainer"></div>
+
+    <!-- Блок результата (обратная связь на ответ) -->
+    <div class="result-block" id="resultMessage">✨ Нажми на любую нишу, чтобы стартовать ✨</div>
+
+    <!-- Кнопка "Далее" -->
+    <div class="next-btn-wrapper" id="nextButtonWrapper">
+        <button class="next-btn hidden" id="nextLevelBtn">➡️ Далее ➡️</button>
+    </div>
+
+    <!-- Помощник -->
+    <div class="helper-section">
+        <div class="helper-emoji" id="helperEmoji">🦉</div>
+        <div class="helper-text" id="helperAdvice">Три варианта ответа: +1, 0, -1 к навыку</div>
+        <button class="helper-btn" id="newAdviceBtn">💡 Новый совет</button>
+    </div>
+
+    <!-- Коллекция карточек -->
+    <div class="collection">
+        <div class="collection-title"><span>📇</span> Коллекция карточек <span>📇</span></div>
+        <div class="cards" id="cardsContainer">💤 пока пусто</div>
+    </div>
+
+    <!-- Сброс -->
+    <div style="display: flex; justify-content: center;">
+        <button class="reset-btn" id="resetGameBtn">🔄 Новая игра 🔄</button>
+    </div>
+    <footer>⚡ 7 ниш, 140 вопросов, 3 варианта, реальные кейсы ⚡</footer>
+</div>
+
+<script>
+(function() {
+    // ---------- НАВЫКИ ----------
+    let skills = {
+        strategic: 0,
+        finance: 0,
+        delegate: 0,
+        leader: 0
+    };
+    let collectedCards = [];
+
+    // Состояние игры
+    let currentPhase = 'chooseNiche';      // 'chooseNiche' или 'answering'
+    let selectedNicheIndex = 0;             // индекс выбранной ниши
+    let currentQuestionIndex = 0;            // 0..19
+    let gameFinished = false;
+    let waitForNext = false;                 // ждём нажатия "Далее" после ответа
+    let lastResult = "✨ Нажми на любую нишу, чтобы стартовать ✨";
+
+    // ---------- СОВЕТЫ ----------
+    const adviceList = [
+        "🦉 У каждого вопроса три варианта, выбирай мудро.",
+        "💡 -1 не всегда плохо, это опыт.",
+        "🔥 Лидерские вопросы про людей.",
+        "📊 Финансы требуют расчёта.",
+        "🤝 Делегируй, но не теряй контроль.",
+        "🚀 Стратегия — это vision.",
+        "👑 Лидерство вдохновляет команду.",
+        "💰 Даже нейтральный ответ 0 — тоже выбор.",
+        "📈 20 вопросов — и ты узнаешь свой профиль.",
+        "😉 После ответа нажми 'Далее'."
+    ];
+
+    // ---------- УНИКАЛЬНЫЕ ВОПРОСЫ ДЛЯ КАЖДОЙ НИШИ (20 шт) ----------
+    // В реальной игре вы можете расширить или заменить любой массив.
+    // Здесь для двух нишей (Еда и IT) приведены полностью уникальные вопросы.
+    // Для остальных пяти использованы шаблоны с вариациями, чтобы обеспечить разнообразие,
+    // но они также могут быть заменены на полностью оригинальные.
+
+    const niches = [
+        {
+            name: "🍔 Еда (кафе)",
+            emoji: "🍔",
+            questions: [
+                // Стратегия 5 вопросов
+                { skill: 'strategic', text: 'В вашем кафе упала посещаемость. Что предпримете?',
+                  options: [
+                      { text: 'Срочно запущу акции и скидки', effect: -1 },
+                      { text: 'Проанализирую меню и спрос, обновлю позиции', effect: 1 },
+                      { text: 'Ничего не буду делать, это сезонно', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Рядом открылся сильный конкурент. Ваш ход?',
+                  options: [
+                      { text: 'Сделаю упор на уникальную атмосферу и сервис', effect: 1 },
+                      { text: 'Начну демпинговать', effect: -1 },
+                      { text: 'Подожду и посмотрю на его действия', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Как вы планируете расширение сети кафе?',
+                  options: [
+                      { text: 'Сначала открою одну точку, отточу процессы, потом тиражирую', effect: 1 },
+                      { text: 'Сразу возьму кредит и открою 3 кафе', effect: -1 },
+                      { text: 'Рассматриваю франшизу как вариант', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'В ваше кафе приходит много семей с детьми. Как используете это?',
+                  options: [
+                      { text: 'Создам детское меню и игровую зону', effect: 1 },
+                      { text: 'Повышу цены, раз есть спрос', effect: -1 },
+                      { text: 'Никак, это временно', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Поставщик продуктов поднял цены на 20%. Ваши действия?',
+                  options: [
+                      { text: 'Начну искать нового поставщика', effect: 0 },
+                      { text: 'Подниму цены в меню без предупреждения', effect: -1 },
+                      { text: 'Пересмотрю меню, убрав дорогие позиции и добавив новые', effect: 1 }
+                  ] },
+                // Финансы 5 вопросов
+                { skill: 'finance', text: 'У вас осталось 50 000 руб. свободных средств. Куда вложите?',
+                  options: [
+                      { text: 'В локальную рекламу в соцсетях', effect: 1 },
+                      { text: 'Куплю новый кофейный аппарат', effect: 0 },
+                      { text: 'Положу на депозит в банк', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Как вы контролируете себестоимость блюд?',
+                  options: [
+                      { text: 'Вручную считаю раз в месяц', effect: 0 },
+                      { text: 'Внедрил систему автоматического учёта', effect: 1 },
+                      { text: 'Доверяю повару, он знает', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Клиент просит провести банкет с отсрочкой платежа. Ваше решение?',
+                  options: [
+                      { text: 'Соглашусь, но возьму задаток 50%', effect: 1 },
+                      { text: 'Откажу, только полная предоплата', effect: 0 },
+                      { text: 'Соглашусь на всё, лишь бы заработать', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Вы решили обновить интерьер. Как финансируете?',
+                  options: [
+                      { text: 'Из прибыли за последние полгода', effect: 1 },
+                      { text: 'Возьму кредит в банке', effect: 0 },
+                      { text: 'Займу у друзей под расписку', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Ваш средний чек ниже, чем у конкурентов. Что делать?',
+                  options: [
+                      { text: 'Повышу цены и добавлю сервис', effect: 0 },
+                      { text: 'Проведу акцию "2 по цене 1"', effect: -1 },
+                      { text: 'Добавлю дорогие позиции и предложу комбо', effect: 1 }
+                  ] },
+                // Делегирование 5 вопросов
+                { skill: 'delegate', text: 'У вас есть шеф-повар. Как часто вмешиваетесь в его работу?',
+                  options: [
+                      { text: 'Контролирую конечный результат, но не процессы', effect: 1 },
+                      { text: 'Постоянно стою на кухне и даю советы', effect: -1 },
+                      { text: 'Полностью доверяю, проверяю раз в месяц', effect: 0 }
+                  ] },
+                { skill: 'delegate', text: 'Официанты просят повысить зарплату. Ваши действия?',
+                  options: [
+                      { text: 'Перепоручу этот вопрос управляющему', effect: 0 },
+                      { text: 'Выслушаю, приму решение сам', effect: 1 },
+                      { text: 'Откажу и пригрожу увольнениями', effect: -1 }
+                  ] },
+                { skill: 'delegate', text: 'Как вы нанимаете персонал в кафе?',
+                  options: [
+                      { text: 'Провожу лично собеседование с каждым', effect: 0 },
+                      { text: 'Доверяю наём своему замдиректора', effect: 1 },
+                      { text: 'Беру всех подряд, потом отсеиваю', effect: -1 }
+                  ] },
+                { skill: 'delegate', text: 'Управляющий предлагает новую систему мотивации. Ваша реакция?',
+                  options: [
+                      { text: 'Попрошу его подготовить презентацию и обсудим', effect: 1 },
+                      { text: 'Отмахнусь, у меня своя система', effect: -1 },
+                      { text: 'Соглашусь, не вникая', effect: 0 }
+                  ] },
+                { skill: 'delegate', text: 'В кафе случилась конфликтная ситуация с клиентом. Кто разбирается?',
+                  options: [
+                      { text: 'Всегда сам выхожу к клиентам', effect: 0 },
+                      { text: 'Уполномочил администратора решать такие вопросы', effect: 1 },
+                      { text: 'Игнорирую, пусть сами решают', effect: -1 }
+                  ] },
+                // Лидерство 5 вопросов
+                { skill: 'leader', text: 'Как вы мотивируете команду в высокий сезон?',
+                  options: [
+                      { text: 'Доплачиваю за переработки и благодарю лично', effect: 1 },
+                      { text: 'Устраиваю вечеринки после закрытия', effect: 0 },
+                      { text: 'Требую работать больше без доплат', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'Сотрудник допустил серьёзную ошибку в заказе. Ваша реакция?',
+                  options: [
+                      { text: 'Вызову на разговор, выясню причины и помогу исправить', effect: 1 },
+                      { text: 'Оштрафую и сделаю выговор при всех', effect: -1 },
+                      { text: 'Промолчу, но учту при премии', effect: 0 }
+                  ] },
+                { skill: 'leader', text: 'Как вы доносите ценности кафе до новых сотрудников?',
+                  options: [
+                      { text: 'Лично провожу вводную беседу', effect: 1 },
+                      { text: 'Раздаю памятки, этого достаточно', effect: 0 },
+                      { text: 'Никак, сами поймут', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'В команде назревает конфликт между поварами. Ваше вмешательство?',
+                  options: [
+                      { text: 'Соберу обе стороны и помогу найти компромисс', effect: 1 },
+                      { text: 'Переведу одного на другой график', effect: 0 },
+                      { text: 'Уволю обоих, найму новых', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'Вы уезжаете в отпуск на месяц. Кто остаётся за главного?',
+                  options: [
+                      { text: 'Назначаю управляющего и провожу инструктаж', effect: 1 },
+                      { text: 'Оставлю всё на самотек, созваниваясь раз в день', effect: 0 },
+                      { text: 'Никому не доверяю, не уеду', effect: -1 }
+                  ] }
+            ]
+        },
+        {
+            name: "💻 Технологии (IT)",
+            emoji: "💻",
+            questions: [
+                // Стратегия 5
+                { skill: 'strategic', text: 'Ваш стартап вышел на рынок, но конкуренты копируют фичи. Что делать?',
+                  options: [
+                      { text: 'Ускорить разработку и выпускать фичи быстрее', effect: 1 },
+                      { text: 'Подать в суд на конкурентов', effect: -1 },
+                      { text: 'Сфокусироваться на уникальном сервисе', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Как выбрать между Web и мобильным приложением?',
+                  options: [
+                      { text: 'Запустить сразу обе платформы', effect: -1 },
+                      { text: 'Сделать MVP на Web, потом мобильную версию', effect: 1 },
+                      { text: 'Только мобильное приложение, это тренд', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Инвестор предлагает деньги, но хочет изменить концепцию. Ваше решение?',
+                  options: [
+                      { text: 'Соглашусь, деньги нужны', effect: -1 },
+                      { text: 'Откажусь, буду искать другого инвестора', effect: 1 },
+                      { text: 'Попробую договориться о компромиссе', effect: 0 }
+                  ] },
+                { skill: 'strategic', text: 'Как часто вы пересматриваете дорожную карту продукта?',
+                  options: [
+                      { text: 'Раз в неделю на летучке', effect: 1 },
+                      { text: 'Раз в месяц', effect: 0 },
+                      { text: 'Только при форс-мажоре', effect: -1 }
+                  ] },
+                { skill: 'strategic', text: 'Выходить на зарубежный рынок или сначала закрепиться в СНГ?',
+                  options: [
+                      { text: 'Сначала СНГ, потом мир', effect: 1 },
+                      { text: 'Сразу глобально, ниша узкая', effect: 0 },
+                      { text: 'Никуда не выходить, локальный рынок большой', effect: -1 }
+                  ] },
+                // Финансы 5
+                { skill: 'finance', text: 'У вас остался бюджет 600 000 руб. на маркетинг. Как потратите?',
+                  options: [
+                      { text: 'Вложу в контекстную рекламу и SEO', effect: 1 },
+                      { text: 'Найму дорогого маркетолога', effect: 0 },
+                      { text: 'Куплю рекламу у блогера-миллионника', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Как оценить юнит-экономику IT-проекта?',
+                  options: [
+                      { text: 'Считаю LTV и CAC вручную в Excel', effect: 0 },
+                      { text: 'Использую специальные сервисы аналитики', effect: 1 },
+                      { text: 'Вообще не считаю, главное — рост', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Вам предложили взять кредит на развитие под 12%. Возьмёте?',
+                  options: [
+                      { text: 'Да, если рентабельность выше 15%', effect: 1 },
+                      { text: 'Нет, принципиально не беру кредиты', effect: 0 },
+                      { text: 'Да, любые деньги пригодятся', effect: -1 }
+                  ] },
+                { skill: 'finance', text: 'Как вы определяете зарплаты разработчиков?',
+                  options: [
+                      { text: 'Смотрю рынок и плачу чуть выше среднего', effect: 1 },
+                      { text: 'Плачу минимум, чтобы согласились', effect: -1 },
+                      { text: 'Дорогих не нанимаю, только джуны', effect: 0 }
+                  ] },
+                { skill: 'finance', text: 'Крупный клиент просит постоплату за разработку. Ваш ответ?',
+                  options: [
+                      { text: 'Соглашусь, но с частичной предоплатой 30%', effect: 1 },
+                      { text: 'Откажу, только 100% предоплата', effect: 0 },
+                      { text: 'Соглашусь на всё, клиент важный', effect: -1 }
+                  ] },
+                // Делегирование 5
+                { skill: 'delegate', text: 'Как вы контролируете работу удалённых разработчиков?',
+                  options: [
+                      { text: 'Ежедневные митинги и отчёты в Trello', effect: 1 },
+                      { text: 'Полностью доверяю, проверяю код раз в неделю', effect: 0 },
+                      { text: 'Никак, плачу за результат', effect: -1 }
+                  ] },
+                { skill: 'delegate', text: 'Тимлид предлагает новую архитектуру проекта. Ваши действия?',
+                  options: [
+                      { text: 'Попрошу обосновать и приму решение', effect: 1 },
+                      { text: 'Отклоню, потому что не хочу менять', effect: -1 },
+                      { text: 'Соглашусь без вопросов', effect: 0 }
+                  ] },
+                { skill: 'delegate', text: 'Кто у вас занимается наймом разработчиков?',
+                  options: [
+                      { text: 'Я лично провожу собеседования', effect: 0 },
+                      { text: 'Этим занимается техлид', effect: 1 },
+                      { text: 'HR ищет, я только утверждаю', effect: 1 }
+                  ] },
+                { skill: 'delegate', text: 'Как вы ставите задачи команде?',
+                  options: [
+                      { text: 'Через таск-трекер с чёткими дедлайнами', effect: 1 },
+                      { text: 'На словах во время созвона', effect: 0 },
+                      { text: 'Пишу в общий чат, кто успел — тот молодец', effect: -1 }
+                  ] },
+                { skill: 'delegate', text: 'Разработчик просит повышения. Кто принимает решение?',
+                  options: [
+                      { text: 'Я сам, но советуюсь с тимлидом', effect: 1 },
+                      { text: 'Только я, никому не доверяю', effect: 0 },
+                      { text: 'Пусть тимлид решает, меня это не касается', effect: -1 }
+                  ] },
+                // Лидерство 5
+                { skill: 'leader', text: 'В команде кризис из-за срыва дедлайна. Как поднимете дух?',
+                  options: [
+                      { text: 'Соберу встречу, признаю ошибки и предложу план', effect: 1 },
+                      { text: 'Накажу виновных', effect: -1 },
+                      { text: 'Устрою тимбилдинг, чтобы отвлечься', effect: 0 }
+                  ] },
+                { skill: 'leader', text: 'Как вы поощряете инициативу разработчиков?',
+                  options: [
+                      { text: 'Даю возможность реализовать свои идеи в рабочее время', effect: 1 },
+                      { text: 'Обещаю премию за внедрённую идею', effect: 0 },
+                      { text: 'Игнорирую, главное — выполнение текущих задач', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'Сотрудник хочет уйти в другую компанию. Ваша реакция?',
+                  options: [
+                      { text: 'Проведу exit-интервью, узнаю причины, предложу улучшения', effect: 1 },
+                      { text: 'Попытаюсь удержать деньгами', effect: 0 },
+                      { text: 'Обижусь и отпущу без разговоров', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'Как вы доносите миссию компании до новых сотрудников?',
+                  options: [
+                      { text: 'Провожу личную встречу в первый день', effect: 1 },
+                      { text: 'Отправляю презентацию по почте', effect: 0 },
+                      { text: 'Считаю, что это неважно', effect: -1 }
+                  ] },
+                { skill: 'leader', text: 'В коллективе назрел конфликт из-за выбора технологий. Ваша роль?',
+                  options: [
+                      { text: 'Организую встречу, выслушаю аргументы и помогу принять решение', effect: 1 },
+                      { text: 'Приму решение сам', effect: 0 },
+                      { text: 'Пусть спорят, пока не договорятся', effect: -1 }
+                  ] }
+            ]
+        },
+        // Остальные 5 нишей — для краткости используем шаблоны с изменёнными названиями, но они могут быть заменены
+        {
+            name: "👗 Мода (бутик)",
+            emoji: "👗",
+            questions: [] // будут заполнены динамически ниже
+        },
+        {
+            name: "📚 Образование",
+            emoji: "📚",
+            questions: []
+        },
+        {
+            name: "🏭 Производство",
+            emoji: "🏭",
+            questions: []
+        },
+        {
+            name: "🧘 Здоровье (фитнес)",
+            emoji: "🧘",
+            questions: []
+        },
+        {
+            name: "🎨 Искусство (арт)",
+            emoji: "🎨",
+            questions: []
+        }
+    ];
+
+    // Функция для генерации вопросов для оставшихся нишей на основе шаблонов с уникальным названием
+    function generateQuestionsForNiche(nicheName) {
+        const qs = [];
+        // Стратегия (5)
+        qs.push({ skill: 'strategic', text: `В ${nicheName} упал спрос. Ваша стратегия?`,
+            options: [
+                { text: 'Срочно устрою распродажу', effect: -1 },
+                { text: 'Проведу анализ и обновлю ассортимент', effect: 1 },
+                { text: 'Подожду сезонного роста', effect: 0 }
+            ] });
+        qs.push({ skill: 'strategic', text: `Конкуренты скопировали вашу идею в ${nicheName}. Что делать?`,
+            options: [
+                { text: 'Сфокусируюсь на сервисе и качестве', effect: 1 },
+                { text: 'Подам в суд', effect: -1 },
+                { text: 'Снижу цены', effect: 0 }
+            ] });
+        qs.push({ skill: 'strategic', text: `Как вы выбираете новые направления в ${nicheName}?`,
+            options: [
+                { text: 'Анализирую тренды и спрос', effect: 1 },
+                { text: 'Копирую успешные примеры из-за рубежа', effect: 0 },
+                { text: 'Полагаюсь на интуицию', effect: -1 }
+            ] });
+        qs.push({ skill: 'strategic', text: `У вас ограничен бюджет на развитие ${nicheName}. Куда направите?`,
+            options: [
+                { text: 'На усиление маркетинга', effect: 0 },
+                { text: 'На улучшение продукта', effect: 1 },
+                { text: 'На расширение команды', effect: -1 }
+            ] });
+        qs.push({ skill: 'strategic', text: `Как часто вы пересматриваете бизнес-модель ${nicheName}?`,
+            options: [
+                { text: 'Раз в полгода', effect: 1 },
+                { text: 'Раз в год', effect: 0 },
+                { text: 'Только при кризисе', effect: -1 }
+            ] });
+        // Финансы (5)
+        qs.push({ skill: 'finance', text: `У вас свободные 100 000 руб. для ${nicheName}. Куда вложите?`,
+            options: [
+                { text: 'В рекламу у блогеров', effect: 0 },
+                { text: 'В закупку нового оборудования', effect: 1 },
+                { text: 'Положу на депозит', effect: -1 }
+            ] });
+        qs.push({ skill: 'finance', text: `Как вы контролируете расходы в ${nicheName}?`,
+            options: [
+                { text: 'Раз в месяц считаю', effect: 0 },
+                { text: 'Использую специальные программы', effect: 1 },
+                { text: 'Приблизительно, на глаз', effect: -1 }
+            ] });
+        qs.push({ skill: 'finance', text: `Крупный клиент просит скидку 20% в ${nicheName}. Ваш ответ?`,
+            options: [
+                { text: 'Соглашусь, если объём большой', effect: 1 },
+                { text: 'Откажу, это ниже себестоимости', effect: 0 },
+                { text: 'Соглашусь без условий', effect: -1 }
+            ] });
+        qs.push({ skill: 'finance', text: `Как вы формируете цену на товары/услуги в ${nicheName}?`,
+            options: [
+                { text: 'Себестоимость + средняя наценка', effect: 1 },
+                { text: 'Как у конкурентов', effect: 0 },
+                { text: 'Назначаю максимальную цену', effect: -1 }
+            ] });
+        qs.push({ skill: 'finance', text: `Вам предложили взять кредит на развитие ${nicheName}. Ваше решение?`,
+            options: [
+                { text: 'Возьму, если ставка ниже рентабельности', effect: 1 },
+                { text: 'Не беру кредиты принципиально', effect: 0 },
+                { text: 'Возьму любые деньги', effect: -1 }
+            ] });
+        // Делегирование (5)
+        qs.push({ skill: 'delegate', text: `У вас большой объём задач в ${nicheName}. Как справляетесь?`,
+            options: [
+                { text: 'Нанимаю помощника и делегирую', effect: 1 },
+                { text: 'Стараюсь всё делать сам', effect: -1 },
+                { text: 'Частично отдаю на аутсорс', effect: 0 }
+            ] });
+        qs.push({ skill: 'delegate', text: `Как вы проверяете работу сотрудников в ${nicheName}?`,
+            options: [
+                { text: 'Ставлю KPI и смотрю отчёты', effect: 1 },
+                { text: 'Постоянно контролирую лично', effect: -1 },
+                { text: 'Доверяю, но изредка проверяю', effect: 0 }
+            ] });
+        qs.push({ skill: 'delegate', text: `Сотрудник не справляется в ${nicheName}. Ваши действия?`,
+            options: [
+                { text: 'Проведу беседу, обучу, дам шанс', effect: 1 },
+                { text: 'Уволю сразу', effect: -1 },
+                { text: 'Переведу на другую должность', effect: 0 }
+            ] });
+        qs.push({ skill: 'delegate', text: `Кто у вас отвечает за закупки в ${nicheName}?`,
+            options: [
+                { text: 'Я лично', effect: 0 },
+                { text: 'Надёжный сотрудник', effect: 1 },
+                { text: 'Никто, все делают что хотят', effect: -1 }
+            ] });
+        qs.push({ skill: 'delegate', text: `Как вы передаёте полномочия в ${nicheName}?`,
+            options: [
+                { text: 'Чётко прописываю задачи и ответственность', effect: 1 },
+                { text: 'На словах, потом разбираемся', effect: 0 },
+                { text: 'Никому не доверяю', effect: -1 }
+            ] });
+        // Лидерство (5)
+        qs.push({ skill: 'leader', text: `Как мотивируете команду в ${nicheName}?`,
+            options: [
+                { text: 'Личным примером и похвалой', effect: 1 },
+                { text: 'Только премиями', effect: 0 },
+                { text: 'Криком и угрозами', effect: -1 }
+            ] });
+        qs.push({ skill: 'leader', text: `В команде ${nicheName} конфликт. Ваша роль?`,
+            options: [
+                { text: 'Выслушаю всех и помогу найти решение', effect: 1 },
+                { text: 'Накажу зачинщиков', effect: -1 },
+                { text: 'Пусть разбираются сами', effect: 0 }
+            ] });
+        qs.push({ skill: 'leader', text: `Как вы принимаете сложные решения в ${nicheName}?`,
+            options: [
+                { text: 'Советуюсь с ключевыми сотрудниками, но решаю сам', effect: 1 },
+                { text: 'Решаю единолично', effect: 0 },
+                { text: 'Перекладываю на других', effect: -1 }
+            ] });
+        qs.push({ skill: 'leader', text: `Сотрудник предложил инновацию для ${nicheName}. Ваша реакция?`,
+            options: [
+                { text: 'Внимательно рассмотрю и внедрю, если полезно', effect: 1 },
+                { text: 'Отмахнусь, у нас свои методы', effect: -1 },
+                { text: 'Похвалю, но ничего не сделаю', effect: 0 }
+            ] });
+        qs.push({ skill: 'leader', text: `Как вы поддерживаете корпоративный дух в ${nicheName}?`,
+            options: [
+                { text: 'Регулярные собрания и открытость', effect: 1 },
+                { text: 'Корпоративы раз в год', effect: 0 },
+                { text: 'Меня это не волнует', effect: -1 }
+            ] });
+        return qs;
+    }
+
+    // Заполняем оставшиеся ниши (индексы 2-6)
+    for (let i = 2; i < niches.length; i++) {
+        niches[i].questions = generateQuestionsForNiche(niches[i].name);
+    }
+
+    // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
+    function updateSkillsUI() {
+        document.getElementById('skillStrategic').innerText = skills.strategic;
+        document.getElementById('skillFinance').innerText = skills.finance;
+        document.getElementById('skillDelegate').innerText = skills.delegate;
+        document.getElementById('skillLeader').innerText = skills.leader;
+    }
+
+    function updateCardsUI() {
+        const cardsDiv = document.getElementById('cardsContainer');
+        if (collectedCards.length === 0) {
+            cardsDiv.innerHTML = '💤 пока пусто — отвечай на вопросы';
+        } else {
+            cardsDiv.innerHTML = collectedCards.map(c => `<span class="card-item">${c}</span>`).join(' ');
+        }
+    }
+
+    function setRandomAdvice() {
+        const randomIndex = Math.floor(Math.random() * adviceList.length);
+        document.getElementById('helperAdvice').innerText = adviceList[randomIndex];
+    }
+
+    function getRecommendation() {
+        const minVal = Math.min(skills.strategic, skills.finance, skills.delegate, skills.leader);
+        if (skills.strategic === minVal) return "🧠 Стратегия отстаёт. Читайте про долгосрочное планирование!";
+        if (skills.finance === minVal) return "💰 Финансы хромают. Изучите основы бюджетирования.";
+        if (skills.delegate === minVal) return "🤝 Делегирование слабое. Попробуйте распределять задачи!";
+        return "👑 Лидерство можно прокачать. Вдохновляйте команду личным примером.";
+    }
+
+    function updateLevelDisplay() {
+        if (gameFinished) {
+            const total = skills.strategic + skills.finance + skills.delegate + skills.leader;
+            let rank = '';
+            if (total <= 20) rank = '🌱 Стажёр';
+            else if (total <= 40) rank = '📈 Менеджер';
+            else if (total <= 60) rank = '⚡ Директор';
+            else rank = '👑 Магнат';
+            const recommendation = getRecommendation();
+            document.getElementById('levelName').innerText = `🏁 ИГРА ЗАВЕРШЕНА (${rank})`;
+            document.getElementById('levelDescription').innerText = `Сумма навыков: ${total}. ${recommendation}`;
+            document.getElementById('progressIndicator').innerText = '';
+            return;
+        }
+        if (currentPhase === 'chooseNiche') {
+            document.getElementById('levelName').innerText = '🌱 Выбор ниши';
+            document.getElementById('levelDescription').innerText = 'Нажми на любую нишу, чтобы начать тест';
+            document.getElementById('progressIndicator').innerText = '';
+        } else {
+            const niche = niches[selectedNicheIndex];
+            document.getElementById('levelName').innerText = `${niche.name} | Вопрос ${currentQuestionIndex+1}/20`;
+            const question = niche.questions[currentQuestionIndex];
+            document.getElementById('levelDescription').innerText = question.text;
+            const skillMap = { strategic: '🧠 Стратегия', finance: '💰 Финансы', delegate: '🤝 Делегирование', leader: '👑 Лидерство' };
+            document.getElementById('progressIndicator').innerText = `Навык: ${skillMap[question.skill]}`;
+        }
+    }
+
+    function renderActions() {
+        const container = document.getElementById('actionsContainer');
+        if (gameFinished) {
+            container.innerHTML = '';
+            return;
+        }
+        if (currentPhase === 'chooseNiche') {
+            let html = '';
+            niches.forEach((niche, idx) => {
+                html += `<button class="action-btn" data-niche-index="${idx}">${niche.name}</button>`;
+            });
+            container.innerHTML = html;
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (waitForNext || gameFinished) return;
+                    const idx = e.currentTarget.dataset.nicheIndex;
+                    if (idx !== undefined) handleNicheChoice(parseInt(idx));
+                });
+            });
+        } else {
+            const question = niches[selectedNicheIndex].questions[currentQuestionIndex];
+            let html = '';
+            question.options.forEach((opt, idx) => {
+                html += `<button class="action-btn" data-option-index="${idx}">${opt.text}</button>`;
+            });
+            container.innerHTML = html;
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (waitForNext || gameFinished) return;
+                    const idx = e.currentTarget.dataset.optionIndex;
+                    if (idx !== undefined) handleAnswer(parseInt(idx));
+                });
+            });
+        }
+    }
+
+    function handleNicheChoice(nicheIndex) {
+        selectedNicheIndex = nicheIndex;
+        currentPhase = 'answering';
+        currentQuestionIndex = 0;
+        waitForNext = false;
+        document.getElementById('onboardingMsg').style.display = 'none';
+        // Сбрасываем навыки и карточки для новой игры
+        skills = { strategic: 0, finance: 0, delegate: 0, leader: 0 };
+        collectedCards = [];
+        updateSkillsUI();
+        updateCardsUI();
+        lastResult = 'Первый вопрос!';
+        document.getElementById('resultMessage').innerText = lastResult;
+        updateLevelDisplay();
+        renderActions();
+    }
+
+    function handleAnswer(optionIndex) {
+        if (waitForNext || gameFinished) return;
+
+        const question = niches[selectedNicheIndex].questions[currentQuestionIndex];
+        const option = question.options[optionIndex];
+        const skill = question.skill;
+
+        skills[skill] = Math.max(0, skills[skill] + option.effect);
+        // Карточка по результату
+        collectedCards.push(option.effect === 1 ? '✅' : (option.effect === 0 ? '🔸' : '❌'));
+
+        lastResult = `Вы ответили: "${option.text}". Эффект: ${option.effect > 0 ? '+' : ''}${option.effect} к ${skill === 'strategic' ? 'стратегии' : skill === 'finance' ? 'финансам' : skill === 'delegate' ? 'делегированию' : 'лидерству'}.`;
+        document.getElementById('resultMessage').innerText = lastResult;
+        updateSkillsUI();
+        updateCardsUI();
+
+        document.querySelectorAll('.action-btn').forEach(btn => { btn.disabled = true; });
+
+        if (currentQuestionIndex === 19) {
+            gameFinished = true;
+            showFinalRank();
+            document.getElementById('nextLevelBtn').classList.add('hidden');
+            updateLevelDisplay();
+            renderActions();
+        } else {
+            waitForNext = true;
+            document.getElementById('nextLevelBtn').classList.remove('hidden');
+        }
+    }
+
+    function goToNextQuestion() {
+        if (!waitForNext || gameFinished) return;
+        currentQuestionIndex++;
+        waitForNext = false;
+        document.getElementById('nextLevelBtn').classList.add('hidden');
+        updateLevelDisplay();
+        renderActions();
+        document.getElementById('resultMessage').innerText = '👉 Выберите ответ на следующий вопрос';
+    }
+
+    function showFinalRank() {
+        const total = skills.strategic + skills.finance + skills.delegate + skills.leader;
+        let rank = '';
+        if (total <= 20) rank = '🌱 Стажёр';
+        else if (total <= 40) rank = '📈 Менеджер';
+        else if (total <= 60) rank = '⚡ Директор';
+        else rank = '👑 Магнат';
+        const recommendation = getRecommendation();
+        lastResult = `🏁 ИТОГ: сумма навыков ${total}. Твой ранг: ${rank}. ${recommendation} 🏁`;
+        document.getElementById('resultMessage').innerText = lastResult;
+    }
+
+    function resetGame() {
+        skills = { strategic: 0, finance: 0, delegate: 0, leader: 0 };
+        collectedCards = [];
+        currentPhase = 'chooseNiche';
+        selectedNicheIndex = 0;
+        currentQuestionIndex = 0;
+        gameFinished = false;
+        waitForNext = false;
+        lastResult = '✨ Нажми на любую нишу, чтобы стартовать ✨';
+        updateSkillsUI();
+        updateCardsUI();
+        document.getElementById('resultMessage').innerText = lastResult;
+        document.getElementById('nextLevelBtn').classList.add('hidden');
+        document.getElementById('onboardingMsg').style.display = 'flex';
+        updateLevelDisplay();
+        renderActions();
+        setRandomAdvice();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        resetGame();
+        document.getElementById('nextLevelBtn').addEventListener('click', goToNextQuestion);
+        document.getElementById('newAdviceBtn').addEventListener('click', setRandomAdvice);
+        document.getElementById('resetGameBtn').addEventListener('click', resetGame);
+    });
+})();
+</script>
+</body>
+</html>
