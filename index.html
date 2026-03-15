@@ -3,980 +3,729 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
-    <title>Мои навыки предпринимателя 🧠 40 вопросов</title>
+    <title>Предприниматель: 5 тестов (чистая диагностика)</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(145deg, #d4e0f0 0%, #b5d0e0 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 8px;
-            position: relative;
         }
         .game-container {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
             background: rgba(245, 240, 250, 0.9);
             backdrop-filter: blur(8px);
             border-radius: 40px 40px 30px 30px;
-            box-shadow: 0 15px 30px rgba(0, 20, 30, 0.3), inset 0 2px 8px #ffffff;
+            box-shadow: 0 15px 30px rgba(0,20,30,0.3);
             padding: 18px 15px 25px;
             border: 3px solid #6c8eb0;
             position: relative;
             z-index: 2;
         }
-        h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin: 0 0 6px;
-            letter-spacing: 1px;
-        }
+        h1 { text-align: center; margin: 0 0 10px; }
         h1 span {
-            background: #6c8eb0;
-            padding: 6px 16px;
-            border-radius: 50px;
+            background: #6c8eb0; padding: 6px 16px; border-radius: 50px;
+            box-shadow: 0 5px 0 #2f5577; color: white; border: 2px solid #aac7e0;
             display: inline-block;
-            box-shadow: 0 5px 0 #2f5577;
-            color: white;
-            border: 2px solid #aac7e0;
         }
-        .onboarding {
-            background: #2f5577;
-            color: white;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 10px 16px;
-            border-radius: 60px;
-            margin: 8px 0 18px;
-            border: 3px solid #ffd966;
-            box-shadow: 0 5px 0 #1a3344;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+        .timer-bar {
+            background: #2f5577; color: white; font-size: 1.3rem;
+            padding: 8px 16px; border-radius: 60px; margin: 10px 0;
+            display: flex; align-items: center; justify-content: space-between;
+            border: 3px solid #ffd966; font-weight: bold;
         }
-        .stats-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            background: #b5cce0;
-            padding: 16px 10px;
-            border-radius: 50px;
-            border: 3px solid #4a6b8a;
+        .timer-progress {
+            width: 120px; height: 20px; background: #e0e7f0; border-radius: 30px;
+            border: 2px solid #4a6b8a; overflow: hidden; margin-left: 15px;
+        }
+        .timer-fill { height: 100%; background: #ffd966; transition: width 1s linear; }
+        .test-selector {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            background: #b5cce0; border-radius: 50px; padding: 16px; border: 3px solid #4a6b8a;
             margin-bottom: 18px;
         }
-        .stat {
-            background: #fffdf5;
-            border-radius: 40px;
-            padding: 8px 12px;
-            flex: 1 1 130px;
-            min-width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            box-shadow: inset 0 1px 5px rgba(0,0,0,0.05), 0 4px 0 #4a6b8a;
-            border: 1px solid #eeddbb;
+        .test-btn {
+            background: #fcf2db; border: 3px solid #3d5a7a; border-radius: 40px;
+            padding: 12px 18px; font-size: 1rem; font-weight: bold; cursor: pointer;
+            box-shadow: 0 5px 0 #263f59; transition: 0.08s; flex: 1 1 160px;
         }
-        .stat span {
-            font-size: 1.6rem;
+        .test-btn:active { transform: translateY(5px); box-shadow: 0 2px 0 #263f59; }
+        .test-btn.selected { background: #ffd966; border-color: #b8860b; box-shadow: 0 5px 0 #8a5f0b; }
+
+        /* Панель с названиями навыков (без цифр) */
+        .skills-names {
+            display: flex; gap: 12px; justify-content: center; background: #e0d7f0;
+            border-radius: 40px; padding: 10px; margin-bottom: 15px; flex-wrap: wrap;
         }
-        .stat-value {
-            background: #2b4f6e;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            min-width: 40px;
-            text-align: center;
-            box-shadow: inset 0 -2px 0 #102433;
+        .skill-tag {
+            background: #fcf2db; border-radius: 30px; padding: 5px 15px;
+            font-weight: bold; color: #2b4f6e;
         }
+
         .level-box {
-            background: #bacedb;
-            border-radius: 50px;
-            padding: 14px 16px;
-            margin-bottom: 18px;
-            border: 3px solid #5478a0;
-            box-shadow: 0 7px 0 #2f5577;
+            background: #bacedb; border-radius: 50px; padding: 14px 16px; margin-bottom: 18px;
+            border: 3px solid #5478a0; box-shadow: 0 7px 0 #2f5577;
         }
-        .level-title {
-            font-size: 1.6rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .level-desc {
-            font-size: 1rem;
-            margin: 8px 0 0;
-            color: #1f3a4c;
-            background: #fffae6;
-            padding: 10px 14px;
-            border-radius: 40px;
-            border: 2px dashed #6f8fa7;
-        }
-        /* Прогресс-бар */
+        .level-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 6px; }
+        .level-desc { font-size: 1rem; background: #fffae6; padding: 10px; border-radius: 40px; }
         .progress-container {
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            margin-top: 12px; display: flex; align-items: center; gap: 12px;
         }
         .progress-bar-bg {
-            flex: 1;
-            height: 24px;
-            background-color: #e0e7f0;
-            border-radius: 30px;
-            border: 2px solid #4a6b8a;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1; height: 24px; background: #e0e7f0; border-radius: 30px;
+            border: 2px solid #4a6b8a; overflow: hidden;
         }
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #6c8eb0, #2f5577);
-            border-radius: 30px;
-            transition: width 0.2s ease;
-        }
-        .progress-percent {
-            font-size: 1.2rem;
-            font-weight: bold;
-            background: #fffacd;
-            padding: 4px 14px;
-            border-radius: 40px;
-            border: 2px solid #b8860b;
-            min-width: 70px;
-            text-align: center;
-        }
-        .actions {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin: 18px 0 12px;
-        }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #6c8eb0, #2f5577); transition: width 0.2s; }
+        .progress-percent { background: #fffacd; padding: 4px 14px; border-radius: 40px; border: 2px solid #b8860b; }
+
+        .actions { display: flex; flex-direction: row; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 15px 0; }
         .action-btn {
-            background: #b5cce0;
-            border: 4px solid #3d5a7a;
-            border-radius: 60px;
-            padding: 14px 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1d2b36;
-            flex: 1 1 200px;
-            min-width: 180px;
-            cursor: pointer;
-            transition: 0.08s linear;
-            box-shadow: 0 7px 0 #263f59, 0 5px 12px rgba(0,0,0,0.2);
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            line-height: 1.3;
-            touch-action: manipulation;
+            background: #b5cce0; border: 4px solid #3d5a7a; border-radius: 60px;
+            padding: 16px 20px; font-size: 1rem; font-weight: 600; color: #1d2b36;
+            flex: 1 1 300px; min-width: 250px; cursor: pointer; box-shadow: 0 7px 0 #263f59;
+            text-align: left; line-height: 1.4; transition: 0.08s; touch-action: manipulation;
         }
-        .action-btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 2px 0 #263f59, 0 5px 12px rgba(0,0,0,0.1);
-        }
-        .action-btn:disabled {
-            opacity: 0.5;
-            transform: translateY(5px);
-            box-shadow: 0 3px 0 #1f3140;
-            pointer-events: none;
-        }
+        .action-btn:active { transform: translateY(5px); box-shadow: 0 2px 0 #263f59; }
+        .action-btn:disabled { opacity: 0.5; transform: translateY(5px); pointer-events: none; }
+
         .result-block {
-            background: #b7e0cd;
-            border-radius: 40px;
-            padding: 16px 18px;
-            margin: 12px 0 8px;
-            border: 4px solid #2c7a5a;
-            font-size: 1.1rem;
-            color: #003323;
-            font-weight: 500;
-            box-shadow: inset 0 0 0 2px #e2ffe8;
-            white-space: pre-line;
+            background: #b7e0cd; border-radius: 40px; padding: 16px; margin: 12px 0;
+            border: 4px solid #2c7a5a; white-space: pre-line; font-size: 1rem;
         }
-        .next-btn-wrapper {
-            display: flex;
-            justify-content: center;
-            margin: 8px 0 5px;
-        }
+        .next-btn-wrapper { display: flex; justify-content: center; margin: 10px 0; }
         .next-btn {
-            background: #4caf7a;
-            font-size: 1.6rem;
-            padding: 14px 40px;
-            border-radius: 50px;
-            border: 4px solid #1f7844;
-            box-shadow: 0 8px 0 #1b5e3a;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.08s;
-            color: white;
-            text-shadow: 2px 2px 0 #1b5e3a;
-            touch-action: manipulation;
-            width: fit-content;
+            background: #4caf7a; font-size: 1.6rem; padding: 14px 40px; border-radius: 50px;
+            border: 4px solid #1f7844; box-shadow: 0 8px 0 #1b5e3a; cursor: pointer;
+            font-weight: bold; color: white; text-shadow: 2px 2px 0 #1b5e3a;
         }
-        .next-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #1b5e3a;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .helper-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 14px;
-            background: #aac0d0;
-            border-radius: 80px;
-            padding: 12px 16px;
-            margin: 18px 0 12px;
-            border: 3px solid #3d5a7a;
-        }
-        .helper-emoji {
-            font-size: 3rem;
-            background: #fcf2db;
-            border-radius: 50%;
-            padding: 6px;
-            box-shadow: 0 5px 0 #4a6b8a;
-            line-height: 1;
-        }
-        .helper-text {
-            font-size: 1rem;
-            flex: 1;
-            background: #fff7e0;
-            padding: 10px 16px;
-            border-radius: 40px;
-            border: 2px solid #4a6b8a;
-            font-weight: 500;
-        }
-        .helper-btn {
-            background: #b8d4c5;
-            border: none;
-            font-size: 1.4rem;
-            padding: 10px 22px;
-            border-radius: 50px;
-            cursor: pointer;
-            border: 3px solid #3c705c;
-            font-weight: bold;
-            box-shadow: 0 6px 0 #2a5242;
-            transition: 0.08s;
-            touch-action: manipulation;
-        }
-        .helper-btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 1px 0 #2a5242;
-        }
-        .collection {
-            background: #dbb9e6;
-            border-radius: 50px;
-            padding: 14px 16px;
-            border: 4px solid #8a50a3;
-            margin-top: 12px;
-        }
-        .collection-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-size: 2rem;
-            background: #f5eaff;
-            border-radius: 40px;
-            padding: 16px 14px;
-            min-height: 80px;
-            border: 2px dashed #a16bb2;
-            align-items: center;
-        }
-        .card-item {
-            background: white;
-            padding: 6px 14px;
-            border-radius: 40px;
-            box-shadow: 0 5px 0 #7d5593;
-            border: 2px solid #cba3dd;
-            font-size: 1.8rem;
-        }
-        .reset-btn {
-            background: #c0cee0;
-            border: none;
-            font-size: 1.5rem;
-            padding: 12px 28px;
-            border-radius: 50px;
-            cursor: pointer;
-            border: 4px solid #3d5a7a;
-            font-weight: bold;
-            box-shadow: 0 7px 0 #263f59;
-            transition: 0.08s;
-            touch-action: manipulation;
-            margin-top: 18px;
-        }
-        .reset-btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 2px 0 #263f59;
-        }
-        footer {
-            text-align: center;
-            margin-top: 16px;
-            color: #2f4f6f;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        /* Модальное окно */
+        .next-btn:active { transform: translateY(6px); box-shadow: 0 2px 0 #1b5e3a; }
+        .hidden { display: none !important; }
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: flex;
+            align-items: center; justify-content: center; z-index: 999;
         }
         .modal-card {
-            max-width: 550px;
-            width: 90%;
-            background: #fef9e8;
-            border-radius: 60px 60px 40px 40px;
-            padding: 30px 25px;
-            border: 6px solid #ffb347;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.5), inset 0 2px 10px #ffffdd;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-        .modal-card h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #2f5577;
-            text-shadow: 2px 2px 0 #d4e0f0;
-        }
-        .modal-card p {
-            background: #e5f0fc;
-            padding: 20px;
-            border-radius: 40px;
-            border: 3px solid #3d5a7a;
-            margin-bottom: 25px;
-            font-weight: 500;
+            max-width: 550px; width:90%; background: #fef9e8; border-radius: 60px;
+            padding: 30px; border: 6px solid #ffb347; text-align: center;
         }
         .modal-btn {
-            background: #6c8eb0;
-            border: 5px solid #2f5577;
-            border-radius: 60px;
-            padding: 16px 40px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 0 #1a3344;
-            cursor: pointer;
-            box-shadow: 0 8px 0 #1a3344;
-            transition: 0.08s;
-            display: inline-block;
-            touch-action: manipulation;
+            background: #6c8eb0; border: 5px solid #2f5577; border-radius: 60px;
+            padding: 16px 40px; font-size: 1.8rem; font-weight: bold; color: white;
+            cursor: pointer; box-shadow: 0 8px 0 #1a3344; margin-top: 20px;
         }
-        .modal-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #1a3344;
+        .reset-btn {
+            background: #c0cee0; font-size: 1.5rem; padding: 12px 28px; border-radius: 50px;
+            border: 4px solid #3d5a7a; box-shadow: 0 7px 0 #263f59; cursor: pointer; margin-top: 18px;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.6rem; }
-            .onboarding { font-size: 0.9rem; padding: 8px; }
-            .stat { font-size: 0.9rem; min-width: 80px; }
-            .stat span { font-size: 1.3rem; }
-            .level-title { font-size: 1.3rem; }
-            .level-desc { font-size: 0.9rem; }
-            .action-btn { font-size: 0.9rem; padding: 12px 6px; min-width: 140px; }
-            .result-block { font-size: 0.95rem; }
-            .helper-text { font-size: 0.9rem; }
-            .helper-btn { font-size: 1.2rem; padding: 8px 16px; }
-            .collection-title { font-size: 1.2rem; }
-            .cards { font-size: 1.5rem; }
-            .card-item { font-size: 1.3rem; padding: 4px 10px; }
-            .modal-card { font-size: 1rem; padding: 20px; }
-            .modal-card h2 { font-size: 1.8rem; }
-            .progress-container { gap: 6px; }
-            .progress-percent { font-size: 1rem; min-width: 55px; }
-        }
+        .reset-btn:active { transform: translateY(5px); box-shadow: 0 2px 0 #263f59; }
+        footer { text-align: center; margin-top: 16px; color: #2f4f6f; }
     </style>
 </head>
 <body>
 <div class="game-container">
-    <h1><span>🧠 Мои навыки предпринимателя 🧠</span></h1>
-    <div class="onboarding" id="onboardingMsg">
-        <span>👉</span> 40 вопросов о бизнесе. Будь честен с собой — выбери свой реальный стиль <span>👈</span>
+    <h1><span>🧠 Реальный профиль: 5 тестов</span></h1>
+    <div class="test-selector" id="testSelector">
+        <button class="test-btn" data-test="0">🧑‍🎨 Самозанятый</button>
+        <button class="test-btn" data-test="1">🏪 Микробизнес</button>
+        <button class="test-btn" data-test="2">🏢 Малый бизнес</button>
+        <button class="test-btn" data-test="3">📊 Средний бизнес</button>
+        <button class="test-btn" data-test="4">🏭 Крупный бизнес</button>
     </div>
 
-    <!-- Панель навыков -->
-    <div class="stats-panel">
-        <div class="stat"><span>🧠</span>Стратегия <span class="stat-value" id="skillStrategic">0</span></div>
-        <div class="stat"><span>💰</span>Финансы <span class="stat-value" id="skillFinance">0</span></div>
-        <div class="stat"><span>🤝</span>Делегирование <span class="stat-value" id="skillDelegate">0</span></div>
-        <div class="stat"><span>👑</span>Лидерство <span class="stat-value" id="skillLeader">0</span></div>
-    </div>
+    <!-- Панель с названиями навыков (без баллов) -->
+    <div class="skills-names" id="skillsNames"></div>
 
-    <!-- Блок текущего состояния -->
     <div class="level-box">
-        <div class="level-title" id="levelName">🚀 Тест предпринимателя</div>
-        <div class="level-desc" id="levelDescription">Нажми "Новая игра" или отвечай на первый вопрос</div>
-        <!-- Прогресс-бар и процент -->
+        <div class="level-title" id="levelName">Выберите тест</div>
+        <div class="level-desc" id="levelDescription">Нажмите на один из тестов выше, чтобы начать</div>
+        <div class="timer-bar" id="timerBar">
+            <span id="timerDisplay">⏳ 30с</span>
+            <div class="timer-progress"><div class="timer-fill" id="timerFill" style="width:100%"></div></div>
+        </div>
         <div class="progress-container">
             <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
             <span class="progress-percent" id="progressPercent">0%</span>
         </div>
     </div>
 
-    <!-- Кнопки действий (варианты ответов) -->
     <div class="actions" id="actionsContainer"></div>
-
-    <!-- Блок результата теперь только для финала -->
     <div class="result-block" id="resultMessage"></div>
 
-    <!-- Кнопка "Далее" -->
-    <div class="next-btn-wrapper" id="nextButtonWrapper">
-        <button class="next-btn hidden" id="nextLevelBtn">➡️ Далее ➡️</button>
+    <div class="next-btn-wrapper">
+        <button class="next-btn hidden" id="nextBtn">➡️ Далее ➡️</button>
     </div>
 
-    <!-- Помощник -->
-    <div class="helper-section">
-        <div class="helper-emoji" id="helperEmoji">🦉</div>
-        <div class="helper-text" id="helperAdvice">Честный ответ точнее выявит твой профиль</div>
-        <button class="helper-btn" id="newAdviceBtn">💡 Новый совет</button>
-    </div>
-
-    <!-- Коллекция карточек -->
-    <div class="collection">
-        <div class="collection-title"><span>📇</span> Твои выборы <span>📇</span></div>
-        <div class="cards" id="cardsContainer">💤 пока пусто</div>
-    </div>
-
-    <!-- Сброс -->
     <div style="display: flex; justify-content: center;">
-        <button class="reset-btn" id="resetGameBtn">🔄 Новая игра 🔄</button>
+        <button class="reset-btn" id="resetBtn">🔄 Сбросить тест</button>
     </div>
-    <footer>⚡ 4 блока: стратегия, финансы, делегирование, лидерство ⚡</footer>
+    <footer>⚡ 5 тестов · 25 основных + 6 контрольных · 30 сек на вопрос ⚡</footer>
 </div>
 
 <!-- Модальное окно приветствия -->
 <div class="modal-overlay" id="welcomeModal">
     <div class="modal-card">
         <h2>🧠 Добро пожаловать!</h2>
-        <p>В бизнесе нет 'волшебной таблетки'. В вопросах ниже описаны реальные ситуации. Выберите тот вариант действий, который наиболее свойственен именно вам в повседневной практике, даже если вы знаете, что другие варианты теоретически 'правильнее'. Здесь нет правильных или неправильных ответов, есть только ваш стиль управления.</p>
-        <button class="modal-btn" id="startGameBtn">🚀 Начать игру</button>
+        <p>Выберите ваш текущий уровень бизнеса. Тест содержит 25 основных вопросов и 6 контрольных. На каждый вопрос даётся 30 секунд. Отвечайте честно, выбирая вариант, ближайший к реальности.</p>
+        <button class="modal-btn" id="startModalBtn">🚀 К выбору теста</button>
     </div>
 </div>
 
 <script>
 (function() {
-    // ---------- НАВЫКИ ----------
-    let skills = {
-        strategic: 0,
-        finance: 0,
-        delegate: 0,
-        leader: 0
-    };
-    let collectedCards = [];
-
-    // Состояние игры
-    let currentQuestionIndex = 0;            // 0..39
-    let gameFinished = false;
-    let waitForNext = false;                 // ждём нажатия "Далее" после ответа
-
-    // Массив вопросов (будет перемешиваться внутри блоков и ответы)
-    let questions = []; // заполним ниже
-
-    // ---------- НОВЫЕ ВОПРОСЫ (40 шт, группировка по блокам) ----------
-    const rawQuestions = [
-        // Блок 1. Стратегия (0-9)
-        { skill: 'strategic', text: 'Вы только запустились, денег в обрез. Как вы распределяете своё время?',
-          options: [
-            { text: '80% времени уходит на сам продукт/услугу, 20% — на попытки продаж.', effect: 0 },
-            { text: '80% времени уходит на поиск первых клиентов и сбор обратной связи, 20% — на доработку продукта.', effect: 1 },
-            { text: '80% времени уходит на изучение конкурентов и теорию, 20% — на регистрацию юрлица.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Рынок, где вы работаете, начал сужаться (кризис в нише). Вы:',
-          options: [
-            { text: 'Урезаете издержки и продолжаете работать на этом же рынке, пережидая трудности.', effect: 0 },
-            { text: 'Начинаете параллельно тестировать смежные ниши, куда можно перенести компетенции.', effect: 1 },
-            { text: 'Срочно ищете кредитные средства, чтобы "пересидеть" кризис с запасом прочности.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Вы решили масштабироваться (открыть филиал в другом городе). Ваш первый шаг:',
-          options: [
-            { text: 'Найти и нанять сильного управляющего на месте и дать ему долю в прибыли филиала.', effect: 1 },
-            { text: 'Поехать туда самому на месяц, чтобы открыться и наладить всё лично.', effect: 0 },
-            { text: 'Составить подробную франшизу и продать её местному игроку.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Крупный конкурент начал демпинг. Ваша реакция:',
-          options: [
-            { text: 'Изучаю его ассортимент и ищу товары/услуги, которых нет у него, делаю на них упор.', effect: 1 },
-            { text: 'Объявляю акцию "Мы вернем разницу в цене, если найдете дешевле".', effect: 0 },
-            { text: 'Пишу гневные посты в соцсетях о нечестной конкуренции.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Вы достигли потолка выручки в текущей нише. Куда направите ресурсы?',
-          options: [
-            { text: 'В углубление: создание премиум-сегмента или более дорогих продуктов для тех же клиентов.', effect: 1 },
-            { text: 'В расширение: покупка мелкого конкурента, чтобы занять его долю.', effect: 0 },
-            { text: 'В диверсификацию: открытие нового бизнеса в другой сфере.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Новый закон/регулирование может серьезно ударить по вашему бизнесу. Вы:',
-          options: [
-            { text: 'Вступаете в профильную ассоциацию, чтобы отстаивать интересы отрасли, и параллельно ищете пути адаптации.', effect: 1 },
-            { text: 'Ждете, пока закон примут, и потом думаете, что делать.', effect: -1 },
-            { text: 'Договариваетесь "на берегу" с проверяющими органами.', effect: 0 }
-        ]},
-        { skill: 'strategic', text: 'В стратегии на 3 года у вас записана амбициозная цель (например, войти в топ-5). Что вы сделаете завтра для её достижения?',
-          options: [
-            { text: 'Проведу совещание, где разобью эту цель на годовые планы для отделов.', effect: 0 },
-            { text: 'Сяду и напишу детальный финансовый план с расчетом необходимых инвестиций.', effect: 1 },
-            { text: 'Ничего, цель долгосрочная, суета ни к чему.', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Клиенты просят внедрить новую услугу, которая не вписывается в вашу текущую стратегию. Вы:',
-          options: [
-            { text: 'Отказываюсь, так как стратегия важнее сиюминутной выгоды.', effect: -1 },
-            { text: 'Тестирую услугу на небольшой группе клиентов, чтобы понять, стоит ли менять стратегию.', effect: 1 },
-            { text: 'Внедряю, ведь клиент всегда прав.', effect: 0 }
-        ]},
-        { skill: 'strategic', text: 'Ваш бизнес стабилен, но технология производства устаревает. Ваши действия:',
-          options: [
-            { text: 'Мониторю рынок новых технологий и коплю деньги на переоснащение.', effect: 1 },
-            { text: 'Беру кредит на модернизацию, чтобы не отстать от конкурентов.', effect: 0 },
-            { text: 'Думаю: "Работает же и так, зачем менять?".', effect: -1 }
-        ]},
-        { skill: 'strategic', text: 'Вы нанимаете стратега/консультанта. Что для вас главное в его работе?',
-          options: [
-            { text: 'Он должен предложить мне готовый план действий.', effect: -1 },
-            { text: 'Он должен помочь мне структурировать мои мысли и дать объективную картину рынка.', effect: 1 },
-            { text: 'Он должен найти инвесторов под наши проекты.', effect: 0 }
-        ]},
-        // Блок 2. Финансы (10-19)
-        { skill: 'finance', text: 'У вас малый бизнес. Вы сняли личные деньги с карты. Ваш первый шаг в учете?',
-          options: [
-            { text: 'Записываю в блокнот или эксель: "Снял 100 тысяч на семью".', effect: 0 },
-            { text: 'Фиксирую это как "Дивиденды" или "Возврат займа учредителю" в управленческом учете.', effect: 1 },
-            { text: 'Не фиксирую, это же мои деньги, бизнес мой.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Появилась свободная прибыль. Куда вы её, скорее всего, направите?',
-          options: [
-            { text: 'В развитие (новый сотрудник, маркетинг, оборудование).', effect: 1 },
-            { text: 'На частичное досрочное погашение кредитов бизнеса.', effect: 0 },
-            { text: 'Выведу и положу на личный депозит "на черный день".', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Клиент-гигант просит отсрочку платежа 90 дней вместо стандартных 30. Вы:',
-          options: [
-            { text: 'Соглашаюсь, так как это крупный клиент, и беру кредит в банке на покрытие кассового разрыва.', effect: 0 },
-            { text: 'Отказываю, потому что не могу столько ждать.', effect: -1 },
-            { text: 'Считаю ставку кредитования, закладываю её в цену для клиента или прошу предоплату за первую партию.', effect: 1 }
-        ]},
-        { skill: 'finance', text: 'Как вы принимаете решение о повышении цен?',
-          options: [
-            { text: 'Ориентируюсь на цены конкурентов: подняли они — поднимаю я.', effect: 0 },
-            { text: 'Считаю свою себестоимость и целевую прибыль, повышаю, когда это обосновано ростом затрат.', effect: 1 },
-            { text: 'Давно не поднимал, боюсь потерять клиентов, работаю в ноль или в минус.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'У вас средний бизнес, несколько направлений. Как вы оцениваете успех каждого?',
-          options: [
-            { text: 'Смотрю на выручку по каждому направлению.', effect: 0 },
-            { text: 'Смотрю на маржинальную прибыль по каждому направлению.', effect: 1 },
-            { text: 'Смотрю на общую прибыль компании в целом.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Налоговая проверка на носу. Ваши действия:',
-          options: [
-            { text: 'Нанять стороннего аудитора для независимой проверки и исправления ошибок.', effect: 1 },
-            { text: 'Систематизирую все документы и готовлюсь сам.', effect: 0 },
-            { text: 'Ищу "договоренности" через знакомых.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Сотрудник просит повысить зарплату, так как ему сделали оффер конкуренты. Вы:',
-          options: [
-            { text: 'Повышаю, чтобы не потерять ценного кадра, даже если это ломает финансовую модель отдела.', effect: 0 },
-            { text: 'Смотрю, могу ли я перераспределить бюджет или увеличить его производительность, чтобы повышение окупилось.', effect: 1 },
-            { text: 'Не повышаю, у нас твердая сетка окладов.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Вы закупаете оборудование. Ваш подход:',
-          options: [
-            { text: 'Беру самое дешевое, лишь бы работало.', effect: -1 },
-            { text: 'Беру в лизинг, чтобы сохранить оборотные средства.', effect: 1 },
-            { text: 'Беру самое дорогое и надежное, покупаю сразу.', effect: 0 }
-        ]},
-        { skill: 'finance', text: 'Прибыль есть, но денег на счетах постоянно не хватает ("кассовые разрывы"). Ваша первая мысль?',
-          options: [
-            { text: 'Надо брать кредитную линию в банке для покрытия кассовых разрывов.', effect: 0 },
-            { text: 'Надо ужесточить платежную дисциплину и сбор дебиторской задолженности.', effect: 1 },
-            { text: 'Надо срочно увеличивать продажи.', effect: -1 }
-        ]},
-        { skill: 'finance', text: 'Инвестор предлагает деньги под долю в бизнесе. Что для вас важнее всего в его предложении?',
-          options: [
-            { text: 'Сумма инвестиций.', effect: 0 },
-            { text: 'Условия выхода (оценка, % доли) и его опыт/связи в отрасли.', effect: 1 },
-            { text: 'Скорость сделки.', effect: -1 }
-        ]},
-        // Блок 3. Делегирование (20-29)
-        { skill: 'delegate', text: 'Вы наняли помощника. Какую задачу вы поставите ему первой?',
-          options: [
-            { text: 'Подготовить аналитику по конкурентам (исследовательская задача).', effect: 1 },
-            { text: 'Сходить на почту и забрать документы (механическая задача).', effect: 0 },
-            { text: 'Провести переговоры с моим ключевым поставщиком (ответственная задача).', effect: -1 }
-        ]},
-        { skill: 'delegate', text: 'Сотрудник сделал задачу, но не так, как вы хотели. Ваши слова?',
-          options: [
-            { text: '"Переделай, вот так, как я сказал".', effect: 0 },
-            { text: '"Расскажи, почему ты сделал именно так? Что я в задаче объяснил непонятно?"', effect: 1 },
-            { text: '"Ладно, сам сделаю, проще научить обезьяну..."', effect: -1 }
-        ]},
-        { skill: 'delegate', text: 'Вы уезжаете в отпуск на 2 недели. Ваши инструкции заместителю:',
-          options: [
-            { text: '"Звони в экстренных случаях, в остальном — ты справишься, я доверяю".', effect: 1 },
-            { text: '"Отчет в вотсап в 20:00 каждый день по всем показателям".', effect: -1 },
-            { text: '"Я оставлю список дел на столе".', effect: 0 }
-        ]},
-        { skill: 'delegate', text: 'Сотрудник перегружен, а у вас есть для него срочная задача. Вы:',
-          options: [
-            { text: 'Потребую сделать, несмотря на загрузку, он должен успевать.', effect: -1 },
-            { text: 'Пересмотрю его приоритеты: что можно отложить, а что сделать срочно.', effect: 1 },
-            { text: 'Сделаю задачу сам, чтобы не напрягать его.', effect: 0 }
-        ]},
-        { skill: 'delegate', text: 'Вы впервые нанимаете руководителя отдела продаж (РОПа). Как вы будете его контролировать?',
-          options: [
-            { text: 'Буду контролировать его отчеты и конечный результат (план продаж).', effect: 1 },
-            { text: 'Буду ходить на все его планерки к продажникам первое время.', effect: 0 },
-            { text: 'Буду контролировать каждого продажника в обход него, чтобы не упустить момент.', effect: -1 }
-        ]},
-        { skill: 'delegate', text: 'У сотрудника случился форс-мажор, и он просит помощи. Вы:',
-          options: [
-            { text: 'Помогаю советами, но ответственность оставляю на нем.', effect: 1 },
-            { text: 'Засучиваю рукава и делаю часть его работы вместе с ним.', effect: 0 },
-            { text: 'Помогаю, а в следующий раз буду знать, кому нельзя доверять.', effect: -1 }
-        ]},
-        { skill: 'delegate', text: 'Как вы считаете, идеальный сотрудник — это:',
-          options: [
-            { text: 'Тот, кто четко исполняет мои указания.', effect: -1 },
-            { text: 'Тот, кто берет задачу и приносит готовое решение, а не вопросы.', effect: 1 },
-            { text: 'Тот, кто разделяет мое мнение по всем вопросам.', effect: 0 }
-        ]},
-        { skill: 'delegate', text: 'Вы поручили сотруднику важный проект. Он провалил дедлайн. Ваш первый вопрос:',
-          options: [
-            { text: '"Почему не сделал вовремя?"', effect: 0 },
-            { text: '"Какая сейчас стадия готовности и сколько нужно времени, чтобы закончить?"', effect: 1 },
-            { text: '"Ты понимаешь, что ты меня подвел?"', effect: -1 }
-        ]},
-        { skill: 'delegate', text: 'Ваш ключевой сотрудник увольняется. Ваши мысли?',
-          options: [
-            { text: '"Кошмар, всё пропало, бизнес встанет".', effect: -1 },
-            { text: '"Надо срочно искать такого же, а лучше — более крутого, на рынке много специалистов".', effect: 0 },
-            { text: '"Пора проанализировать его функции и подумать, как разделить их между оставшимися, автоматизировать или нанять двух новичков дешевле".', effect: 1 }
-        ]},
-        { skill: 'delegate', text: 'Сотрудник регулярно перерабатывает и выдыхается. Вы:',
-          options: [
-            { text: 'Горжусь его преданностью и трудолюбием.', effect: -1 },
-            { text: 'Требую от него соблюдать график и делегировать часть задач его помощникам.', effect: 1 },
-            { text: 'Доплачиваю ему за переработки.', effect: 0 }
-        ]},
-        // Блок 4. Лидерство (30-39)
-        { skill: 'leader', text: 'В компании аврал, нужно работать сверхурочно неделю. Как вы мотивируете?',
-          options: [
-            { text: 'Пообещаю оплатить переработки и премию за быстрый результат.', effect: 0 },
-            { text: 'Скажу: "Ребята, это наш общий вызов, если мы не сделаем, мы все потеряем. Я с вами до конца в цеху/офисе".', effect: 1 },
-            { text: 'Просто поставлю перед фактом: "Надо, придется задержаться".', effect: -1 }
-        ]},
-        { skill: 'leader', text: 'Вы видите, что двое ваших замов недолюбливают друг друга. Ваше действие:',
-          options: [
-            { text: 'Ничего, взрослые люди, сами разберутся.', effect: -1 },
-            { text: 'Вызову их на разговор, где заставлю публично высказать претензии и найду компромисс.', effect: 1 },
-            { text: 'Перекрою рабочие процессы так, чтобы они пересекались по минимуму.', effect: 0 }
-        ]},
-        { skill: 'leader', text: 'Вам предстоит трудный разговор об увольнении сотрудника. Ваша тактика:',
-          options: [
-            { text: 'Буду ходить вокруг да около, намекать, чтобы уволился сам.', effect: -1 },
-            { text: 'Скажу прямо, конструктивно, с объяснением причин и, возможно, помощью в дальнейшем трудоустройстве.', effect: 1 },
-            { text: 'Просто отдам приказ службе безопасности и перестану пускать его на работу.', effect: 0 }
-        ]},
-        { skill: 'leader', text: 'Новый сотрудник спорит с вами по рабочему процессу. Ваша реакция:',
-          options: [
-            { text: 'Слушаю его аргументы, если они дельные — принимаю.', effect: 1 },
-            { text: 'Объясняю, почему я так решил, и прошу выполнять, потому что ответственность всё равно на мне.', effect: 0 },
-            { text: 'Пресекаю: "Я начальник — я дурак, ты умный? Работай давай".', effect: -1 }
-        ]},
-        { skill: 'leader', text: 'Как часто вы обсуждаете с командой миссию и ценности компании?',
-          options: [
-            { text: 'Раз в год на корпоративе или новогоднем собрании.', effect: 0 },
-            { text: 'Регулярно, когда ставим новые цели или набираем людей.', effect: 1 },
-            { text: 'Никогда, это всё пустые слова, главное — зарплата.', effect: -1 }
-        ]},
-        { skill: 'leader', text: 'Вы допустили публичную ошибку на совещании. Ваше поведение:',
-          options: [
-            { text: 'Промолчу, кто не ошибается.', effect: -1 },
-            { text: 'Признаю ошибку и предложу план исправления.', effect: 1 },
-            { text: 'Скажу, что обстоятельства изменились, поэтому решение было верным тогда, но не сейчас.', effect: 0 }
-        ]},
-        { skill: 'leader', text: 'Что для вас важнее в работе с людьми?',
-          options: [
-            { text: 'Дисциплина и порядок.', effect: 0 },
-            { text: 'Инициативность и творческий подход.', effect: 1 },
-            { text: 'Личная лояльность.', effect: -1 }
-        ]},
-        { skill: 'leader', text: 'Вы взяли человека "под крыло", вложили в него силы, а он уходит к конкуренту. Ваши чувства:',
-          options: [
-            { text: 'Злость и обида, больше никого растить не буду.', effect: -1 },
-            { text: 'Сожаление, но понимание, что это жизнь. Буду работать над удержанием ключевых.', effect: 1 },
-            { text: 'Безразличие, найду другого.', effect: 0 }
-        ]},
-        { skill: 'leader', text: 'Как вы узнаете реальную атмосферу в коллективе?',
-          options: [
-            { text: 'По отчетам HR.', effect: 0 },
-            { text: 'Хожу на обеды с разными отделами, общаюсь неформально.', effect: 1 },
-            { text: 'Я и так всё знаю, у меня интуиция.', effect: -1 }
-        ]},
-        { skill: 'leader', text: 'Команда устала после сложного проекта. Вы:',
-          options: [
-            { text: 'Даю выходной или отправляю на тимбилдинг за счет компании.', effect: 1 },
-            { text: 'Устраиваю разбор полетов, пока всё свежо в памяти.', effect: 0 },
-            { text: 'Ставлю новую задачу, нельзя расслабляться.', effect: -1 }
-        ]}
-    ];
-
-    // ---------- НОВЫЕ КАРТОЧКИ РЕЗУЛЬТАТОВ ----------
-    const cardsStrategicFinance = {
-        HH: { title: 'Архитектор', desc: 'Вы одинаково сильны в планировании и в учете. Вы не просто мечтаете о захвате рынка, вы точно знаете, сколько это будет стоить и где взять деньги. Ваш бизнес, вероятно, растет стабильно и предсказуемо. Риск — стать слишком рациональным и упустить гибкость.', advice: 'Позволяйте себе иногда "безумные" эксперименты за рамками бюджета. Мир меняется быстрее Excel-таблиц.', slogan: '«Мост между мечтой и бюджетом уже построен. Пора запустить по нему поток.»' },
-        HM: { title: 'Мечтатель с калькулятором', desc: 'У вас отличное стратегическое чутье, вы видите перспективу. С деньгами вы обращаетесь осторожно, но не всегда профессионально. Вы скорее интуитивный финансист. Из-за этого можете тормозить хорошие проекты, боясь цифр, или наоборот, ввязываться в авантюры, полагаясь на "авось".', advice: 'Доверьте цифры профессионалу, а себе оставьте видение. Ваша задача — придумать, куда плыть, а штурман посчитает, сколько нужно угля.', slogan: '«Я вижу землю обетованную, но мне нужен штурман, чтобы не сесть на мель.»' },
-        HL: { title: 'Прожектер', desc: 'Вы — вулкан идей. Но финансовая дисциплина — ваша ахиллесова пята. Деньги утекают сквозь пальцы, вы не знаете точную себестоимость и путаете прибыль с оборотом. Любая ваша гениальная идея рискует разбиться о банальное отсутствие денег в кассе.', advice: 'Срочно внедрите жесткий финансовый контроллинг. Наймите "финансового полицейского", который будет говорить вам "нет", когда это нужно. Иначе вы будете вечно гореть, но не доходить до цели.', slogan: '«Мои идеи стоят миллиарды, но тают в дырявом кошельке. Пора залатать дыры.»' },
-        MH: { title: 'Рачительный хозяин', desc: 'Вы крепко стоите на ногах. Деньги считать умеете, риски минимизируете. Ваш бизнес — надежная "корова", которая дает молоко. Но вот с развитием беда: вы либо топчетесь на месте, либо развиваетесь слишком медленно, боясь рисковать накопленным.', advice: 'Отклейте деньги от стула. Перестаньте их просто копить. Найдите амбициозного стратега (или стажера с горящими глазами) и инвестируйте в новый, рискованный проект. Иначе конкуренты съедят ваш рынок, пока вы считаете проценты по депозиту.', slogan: '«Золотой запас — это не цель, а топливо для большого путешествия.»' },
-        MM: { title: 'Консерватор', desc: 'Вы действуете по накатанной. Резких движений не делаете, но и прорывов не совершаете. Деньги есть, стратегия есть, но всё как у всех. Вас сложно назвать предпринимателем-визионером, вы скорее добросовестный управленец. Риск — отстать от рынка в эпоху перемен.', advice: 'Выйдите из зоны комфорта. Попробуйте запустить "стартап внутри компании" с отдельным бюджетом и правилами. Встряска пойдет на пользу и финансам, и стратегии.', slogan: '«Течение несет меня быстрее, чем я гребу. Пора включать мотор.»' },
-        ML: { title: 'Добрый самаритянин', desc: 'Вы часто путаете бизнес с благотворительностью. Деньги не любят счета, они любят утекать на "нужные", но не всегда выгодные проекты. Вы можете быть щедры с сотрудниками и клиентами в ущерб компании. Стратегия при этом размыта.', advice: 'Полюбите цифры. Поймите, что бизнес должен приносить прибыль, иначе вы не сможете помогать никому. Начните с учета личных расходов и себестоимости продукта.', slogan: '«Доброта без расчета разоряет. Наполни кошелек, чтобы тепла хватило на всех.»' },
-        LH: { title: 'Скряга', desc: 'Вы умеете копить и экономить, но не знаете, ради чего. Стратегическое развитие буксует, вы реагируете на изменения, а не создаете их. Капитал работает не на рост, а просто лежит мертвым грузом, согревая душу своей цифрой на счете.', advice: 'Перестаньте быть "Плюшкиным". Деньги — это ресурс. Наймите человека, который придумает, как их потратить с умом для кратного роста. Найдите цель, достойную вашего капитала.', slogan: '«Богатство — это не то, что ты скопил, а то, что ты пустил в рост.»' },
-        LL: { title: 'Танцор на граблях', desc: 'Деньги уходят в никуда, планов нет. Вы живете сегодняшним днем: сегодня есть заказ — хорошо, завтра нет — плохо. Хаос — ваша стихия. Вы либо начинали недавно, либо давно потеряли нить управления.', advice: 'Замрите. Перестаньте дергаться. Сделайте две вещи: 1) Посчитайте все долги и расходы. 2) Напишите простой план на месяц. Найдите наставника. Без системы и учета вы сгорите.', slogan: '«Из искры возгорится пламя, но сначала нужно собрать хворост в одну кучу.»' }
-    };
-
-    const cardsDelegateLeader = {
-        HH: { title: 'Командир', desc: 'Вы умеете и вдохновлять, и распределять нагрузку. Люди за вами идут, и каждый знает свой маневр. Ваша команда — это организм, где вы — мозг. Бизнес может работать без вашего ежесекундного участия.', advice: 'Не дайте системе задушить живое общение. Помните, что люди — не функции. Продолжайте развивать лидеров внутри команды.', slogan: '«Я веду за собой, но каждый в строю знает свой маневр. Вместе мы — армия.»' },
-        HM: { title: 'Диспетчер', desc: 'Вы отличный организатор. Процессы отлажены, задачи распределены, все при деле. Но люди работают на вас из-за денег или страха наказания, а не из-за общей идеи. Вам не хватает харизмы, чтобы зажечь их по-настоящему.', advice: 'Снимите очки менеджера. Начните общаться с командой не только о работе. Узнайте их мечты, говорите о ценностях. Станьте для них не просто "начальником", а "ведущим".', slogan: '«Шестеренки крутятся слаженно, но мотор не рычит. Пора добавить страсти.»' },
-        HL: { title: 'Кукловод', desc: 'Вы выстроили жесткую систему, где все роли расписаны. Вы эффективны, но вас боятся или не любят. Люди — винтики. В кризис они не будут держаться за компанию, а разбегутся, так как ничем, кроме зарплаты, не привязаны.', advice: 'Люди — не ресурс. Перестаньте относиться к ним как к функциям. Начните проявлять эмпатию. Увольнять сложно, но хвалить прилюдно — обязательно. Иначе в черный день вы останетесь один.', slogan: '«Марионетки танцуют, пока я дергаю за ниточки. Но смогут ли они плясать сами, если нитки оборвутся?»' },
-        MH: { title: 'Вдохновитель', desc: 'Вы — душа компании, генератор идей и мотиватор. Команда вас обожает и готова за вами в огонь. Но хаос в процессах съедает всю эту энергию. Вы не умеете или не любите делегировать четко, из-за чего люди выгорают или делают не то.', advice: 'Облеките свою харизму в правила. Наймите жесткого операционного директора, который наведет порядок. Ваше дело — стратегия и мотивация, его — контроль и регламенты.', slogan: '«Я зажигаю звезды, но им нужна карта звездного неба, чтобы не сбиться с пути.»' },
-        MM: { title: 'Свой в доску', desc: 'Вы хороший, добрый руководитель для небольшой компании. Все друг друга знают, вы "свой". Но это работает только до определенного размера. Как только бизнес растет, вашего авторитета и неумения выстроить систему начинает не хватать.', advice: 'Перерастайте роль "своего парня". Учитесь быть требовательным и формализовывать процессы. Либо наймите "злого" управленца, который возьмет на себя эту роль, пока вы остаетесь "добрым" лидером.', slogan: '«В тесной компании хорошо, но пришло время выходить в море. Нужен корабль, а не плот.»' },
-        ML: { title: 'Одинокий герой', desc: 'Вы всё тащите на себе, устали, но не доверяете никому. Команда либо пассивна, либо текучка. Вас не слышат, потому что вы не лидер, а надсмотрщик. Процессы не отлажены. Это путь к выгоранию.', advice: 'Признайте, что вы не справляетесь один. Начните с малого: делегируйте самую простую, нестрашную задачу и не критикуйте за результат. Учитесь доверять миру, иначе он сожрет вас.', slogan: '«Один в поле не воин. Даже супергерою нужна команда, чтобы спасти мир.»' },
-        LH: { title: 'Надрывный лидер', desc: 'Вы — пассионарий. Вы ведете за собой, показываете пример, пашете 24/7. Команда восхищается вами, но вы не даете им расти, потому что всё делаете сами. В итоге вы — узкое горлышко бутылки, бизнес упирается в вас.', advice: 'Научитесь отпускать. Позвольте другим делать ошибки и учиться. Ваша новая роль — не делать, а создавать условия, чтобы делали другие. Иначе вы сгорите, а команда так и не научится летать.', slogan: '«Я несу знамя, но армия стоит на месте. Пора передать знамя и повести всех в атаку.»' },
-        LL: { title: 'Загнанная лошадь', desc: 'Хаос, недоверие, усталость. Вы не управляете людьми, а "разруливаете" проблемы. Люди не мотивированы, процессы не работают. Это состояние близкое к кризису.', advice: 'SOS. Вам нужен отдых и перезагрузка. Вы не видите выхода, потому что устали. Наймите антикризисного управляющего или коуча на время. Начните с того, чтобы просто остановиться и выдохнуть.', slogan: '«Тьма сгущается перед рассветом. Самое время зажечь свет и позвать путников.»' }
-    };
-
-    // ---------- Функции перемешивания ----------
-    function shuffleArray(arr) {
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
+    // ---------- 1. КОНТРОЛЬНЫЕ ВОПРОСЫ (индивидуальные для каждого теста) ----------
+    function createControlQuestions(theme) {
+        // theme: 'solo', 'micro', 'small', 'medium', 'large'
+        const base = [
+            { a: 'Я всегда принимаю идеальные кадровые решения.', b: 'Иногда я ошибаюсь в людях.' },
+            { a: 'Мои финансовые прогнозы сбываются на 100%.', b: 'Бывает, что факт расходится с планом.' },
+            { a: 'У меня никогда не бывает конфликтов с партнёрами.', b: 'Конфликты случаются, но мы их решаем.' },
+            { a: 'Я всегда успеваю всё запланированное.', b: 'Часто планы срываются из-за обстоятельств.' },
+            { a: 'Все мои сотрудники полностью разделяют мои ценности.', b: 'У некоторых могут быть другие взгляды, это нормально.' },
+            { a: 'Я точно знаю, что делаю, и никогда не сомневаюсь.', b: 'В бизнесе всегда есть зона неопределённости.' }
+        ];
+        // Адаптируем тексты под тему (можно просто вернуть base, но для разнообразия заменим слова)
+        if (theme === 'solo') {
+            return base.map(q => ({
+                a: q.a.replace('кадровые решения', 'выбор заказов'),
+                b: q.b.replace('ошибаюсь в людях', 'берусь не за свои проекты')
+            }));
+        } else if (theme === 'micro') {
+            return base.map(q => ({
+                a: q.a.replace('кадровые решения', 'решения по найму помощников'),
+                b: q.b
+            }));
+        } else if (theme === 'small') {
+            return base.map(q => ({
+                a: q.a, b: q.b
+            }));
+        } else if (theme === 'medium') {
+            return base.map(q => ({
+                a: q.a.replace('сотрудники', 'топ-менеджеры'),
+                b: q.b
+            }));
+        } else if (theme === 'large') {
+            return base.map(q => ({
+                a: q.a.replace('сотрудники', 'совет директоров'),
+                b: q.b
+            }));
         }
-        return arr;
+        return base;
     }
 
-    // Перемешиваем вопросы внутри блоков (по 10) и перемешиваем ответы в каждом вопросе
-    function shuffleQuestionsAndAnswers() {
-        const blockSize = 10;
-        let shuffled = [];
-        for (let b = 0; b < 4; b++) {
-            let block = rawQuestions.slice(b * blockSize, (b + 1) * blockSize);
-            block = shuffleArray(block);
-            block.forEach(q => {
-                q.options = shuffleArray(q.options.slice());
-            });
-            shuffled.push(...block);
-        }
-        return shuffled;
-    }
+    // ---------- 2. ДАННЫЕ ТЕСТОВ (вопросы и карточки) ----------
 
-    // ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ UI ----------
-    function updateSkillsUI() {
-        document.getElementById('skillStrategic').innerText = skills.strategic;
-        document.getElementById('skillFinance').innerText = skills.finance;
-        document.getElementById('skillDelegate').innerText = skills.delegate;
-        document.getElementById('skillLeader').innerText = skills.leader;
-    }
-
-    function updateCardsUI() {
-        const cardsDiv = document.getElementById('cardsContainer');
-        if (collectedCards.length === 0) {
-            cardsDiv.innerHTML = '💤 пока пусто — отвечай на вопросы';
-        } else {
-            cardsDiv.innerHTML = collectedCards.map(c => `<span class="card-item">${c}</span>`).join(' ');
-        }
-    }
-
-    // Советы
-    const adviceList = [
-        "🦉 Выбирай вариант, который ближе к реальности, а не к идеалу.",
-        "💡 -1 тоже опыт, он показывает зоны роста.",
-        "🔥 Лидерство видно в кризис.",
-        "📊 Финансы любят точность.",
-        "🤝 Делегирование освобождает время на стратегию.",
-        "🚀 Стратегия без денег — мечты.",
-        "👑 Лидерство — это служение команде.",
-        "💰 Даже нейтральный ответ 0 — осознанный выбор.",
-        "📈 40 вопросов раскроют твой профиль.",
-        "😉 После ответа жми 'Далее'."
-    ];
-
-    function setRandomAdvice() {
-        const randomIndex = Math.floor(Math.random() * adviceList.length);
-        document.getElementById('helperAdvice').innerText = adviceList[randomIndex];
-    }
-
-    function getLevel(score) {
-        if (score >= 4) return 'H';
-        if (score <= -4) return 'L';
-        return 'M';
-    }
-
-    function showFinalResult() {
-        const sLev = getLevel(skills.strategic);
-        const fLev = getLevel(skills.finance);
-        const dLev = getLevel(skills.delegate);
-        const lLev = getLevel(skills.leader);
-
-        const keySF = sLev + fLev;
-        const keyDL = dLev + lLev;
-
-        const cardSF = cardsStrategicFinance[keySF] || cardsStrategicFinance.LL;
-        const cardDL = cardsDelegateLeader[keyDL] || cardsDelegateLeader.LL;
-
-        const total = skills.strategic + skills.finance + skills.delegate + skills.leader;
-        const resultText = `🧩 СТРАТЕГИЯ/ФИНАНСЫ: ${cardSF.title}. ${cardSF.desc}\n\n` +
-                           `🧩 ДЕЛЕГИРОВАНИЕ/ЛИДЕРСТВО: ${cardDL.title}. ${cardDL.desc}\n\n` +
-                           `💡 Совет: ${cardSF.advice} | ${cardDL.advice}\n` +
-                           `🏆 Слоган: ${cardSF.slogan}  |  ${cardDL.slogan}\n` +
-                           `📊 Итоговая сумма баллов: ${total}`;
-        document.getElementById('resultMessage').innerText = resultText;
-        document.getElementById('levelName').innerText = `🏁 ТВОЙ ПРЕДПРИНИМАТЕЛЬСКИЙ ПРОФИЛЬ`;
-        document.getElementById('levelDescription').innerHTML = `Архетипы: <b>${cardSF.title}</b> (Стратегия/Финансы) и <b>${cardDL.title}</b> (Делегирование/Лидерство)`;
-    }
-
-    // ---------- ОСНОВНАЯ ЛОГИКА ----------
-    function updateLevelDisplay() {
-        if (gameFinished) {
-            return;
-        }
-        const q = questions[currentQuestionIndex];
-        const skillNames = { strategic: '🧠 Стратегия', finance: '💰 Финансы', delegate: '🤝 Делегирование', leader: '👑 Лидерство' };
-        document.getElementById('levelName').innerText = skillNames[q.skill];
-        document.getElementById('levelDescription').innerText = q.text;
-        const percent = Math.round((currentQuestionIndex) / (questions.length-1) * 100);
-        document.getElementById('progressFill').style.width = percent + '%';
-        document.getElementById('progressPercent').innerText = percent + '%';
-    }
-
-    function renderActions() {
-        const container = document.getElementById('actionsContainer');
-        if (gameFinished) {
-            container.innerHTML = '';
-            return;
-        }
-        const q = questions[currentQuestionIndex];
-        let html = '';
-        q.options.forEach((opt, idx) => {
-            html += `<button class="action-btn" data-option-index="${idx}">${opt.text}</button>`;
+    function makeQuestions(arr) {
+        return arr.map(q => {
+            let parts = q.split(' / ');
+            if (parts.length < 2) parts = [q, ''];
+            return { a: parts[0].trim(), b: parts[1].trim() };
         });
-        container.innerHTML = html;
+    }
+
+    // ----- ТЕСТ 1. Самозанятый -----
+    const test1_skills = [
+        { name: 'Мастерство', short: 'М', base: 0,
+          questions: makeQuestions([
+            'Я часто берусь за задачи, в которых не очень компетентен, лишь бы заработать. / Я чётко знаю свои сильные стороны и делаю только то, что умею лучше всего.',
+            'Я редко повышаю цены, боюсь потерять клиентов. / Я регулярно анализирую рынок и повышаю цены по мере роста мастерства.',
+            'Я перестал учиться новому, опыта достаточно. / Я постоянно изучаю новые техники, прохожу курсы, читаю профессиональную литературу.',
+            'Мои работы (услуги) среднего качества, как у большинства. / Клиенты выбирают меня именно за высокое качество и уникальный подход.',
+            'Я соглашаюсь на срочные заказы в ущерб качеству. / Я отказываюсь от заказов, если не могу выполнить их на должном уровне.'
+          ]) },
+        { name: 'Самопродажи', short: 'С', base: 0,
+          questions: makeQuestions([
+            'Мои клиенты приходят только по знакомству, я специально не продвигаю себя. / Я регулярно веду соцсети, публикую экспертный контент, напоминаю о себе.',
+            'У меня нет портфолио или сайта, клиенты верят на слово. / У меня есть профессиональное портфолио, кейсы, отзывы, которые я показываю новым клиентам.',
+            'Я не участвую в профессиональных сообществах и мероприятиях. / Я активно участвую в профильных форумах, конференциях, завожу полезные знакомства.',
+            'Я стесняюсь просить клиентов рекомендовать меня друзьям. / Я всегда прошу довольных клиентов порекомендовать меня, иногда предлагаю бонус за referral.',
+            'Я надеюсь на сарафанное радио и не вкладываю время в маркетинг. / Я выделяю минимум 2 часа в неделю на продвижение и развитие личного бренда.'
+          ]) },
+        { name: 'Тайм-менеджмент', short: 'Т', base: 0,
+          questions: makeQuestions([
+            'Я работаю, когда есть настроение, часто откладываю дела. / У меня есть чёткий график и режим работы, даже если я сам себе начальник.',
+            'Я постоянно отвлекаюсь на соцсети, звонки, не могу сосредоточиться. / Я использую техники тайм-менеджмента (помидор, списки задач) и минимизирую отвлечения.',
+            'Мои дедлайны часто срываются, я не успеваю к сроку. / Я планирую время с запасом и всегда сдаю работу вовремя.',
+            'Я не отделяю рабочее время от личного, работаю вечерами и в выходные. / У меня есть четкие границы: я не работаю в личное время и отдыхаю.',
+            'У меня нет списка задач, я всё держу в голове. / Я использую планировщик (бумажный или электронный) и регулярно обновляю список дел.'
+          ]) },
+        { name: 'Финграмотность', short: 'Ф', base: 0,
+          questions: makeQuestions([
+            'Я не знаю точно, сколько заработал в прошлом месяце. / Я веду простой учёт доходов и расходов (таблица, приложение).',
+            'Налоги плачу раз в год или когда вспомню, иногда бывают пени. / Я регулярно откладываю деньги на налоги и знаю сроки уплаты.',
+            'Все заработанные деньги сразу трачу или не знаю, куда они уходят. / У меня есть финансовая подушка (минимум на 3 месяца жизни) и я откладываю на цели.',
+            'Я смешиваю личные и бизнес-деньги, не разделяю счета. / У меня отдельный счёт для бизнеса, я плачу себе зарплату.',
+            'Я не знаю себестоимость своего часа/услуги. / Я точно знаю, сколько стоит мой час и ниже какой цены мне невыгодно работать.'
+          ]) },
+        { name: 'Коммуникация', short: 'К', base: 0,
+          questions: makeQuestions([
+            'Если клиент недоволен, я обижаюсь и спорю. / Я спокойно выслушиваю претензии, стараюсь понять причину и договориться.',
+            'Мне трудно отказывать клиентам, даже если их требования неадекватны. / Я умею вежливо отказать, если проект не соответствует моим условиям.',
+            'В переписке с клиентами я допускаю ошибки, не всегда отвечаю вовремя. / Я всегда отвечаю на сообщения быстро, грамотно и дружелюбно.',
+            'Я не уточняю детали задания, надеюсь на интуицию, потом переделываю. / Я всегда фиксирую ТЗ письменно и согласовываю с клиентом перед началом работы.',
+            'После завершения проекта я не поддерживаю связь с клиентом. / Я поддерживаю отношения с бывшими клиентами, поздравляю с праздниками, напоминаю о себе.'
+          ]) }
+    ];
+
+    const test1_profiles = {
+        HH: { title: 'Звезда',
+              desc: 'Вы – идеальный самозанятый: высокий профессионализм, отличная самоорганизация, умение продавать и общаться. Бизнес растёт, клиенты рекомендуют, вы уважаете своё время.',
+              strengths: 'Глубокие знания, дисциплина, развитые коммуникативные навыки, лояльная база.',
+              weaknesses: 'Перегрузка, риск выгорания, нехватка времени на стратегию.',
+              advice: 'Переходите к созданию команды, делегируйте рутину, осваивайте управленческие навыки.',
+              slogan: '«Ты – звезда. Пора зажигать другие звёзды вокруг!»' },
+        HM: { title: 'Мастер-невидимка',
+              desc: 'Отличный специалист, высокая самоорганизация, но средние продажи и коммуникация. Клиентов достаточно, но потенциал не раскрыт.',
+              strengths: 'Качество работы, надёжность, уважение коллег.',
+              weaknesses: 'Слабое продвижение, недооценка услуг.',
+              advice: 'Усильте маркетинг – соцсети, отзывы, сообщества. Поднимите цены.',
+              slogan: '«Мастерство, о котором никто не знает, – клад в земле. Откопай его!»' },
+        HL: { title: 'Затворник',
+              desc: 'Блестящий профессионал, но не умеет продавать и общаться. Зависит от узкого круга, работает дёшево.',
+              strengths: 'Глубокие знания, квалификация.',
+              weaknesses: 'Отсутствие маркетинга, слабые переговоры, низкая видимость.',
+              advice: 'Срочно развивайте продажи и коммуникации – курсы, портфолио, рекомендации.',
+              slogan: '«Гений в подполье – потеря для мира. Выйди на свет!»' },
+        MH: { title: 'Перспективный середняк',
+              desc: 'Отлично продаёт, но мастерство и организация средние. Качество страдает, клиенты могут уходить.',
+              strengths: 'Обаяние, умение убеждать, активное продвижение.',
+              weaknesses: 'Нехватка профессионализма, ошибки в работе.',
+              advice: 'Инвестируйте в обучение мастерству, найдите наставника.',
+              slogan: '«Продажи без качества – мыльный пузырь. Надувай его экспертизой!»' },
+        MM: { title: 'Золотая середина',
+              desc: 'Всё сбалансировано на среднем уровне. Стабильно, но нет роста.',
+              strengths: 'Устойчивость, отсутствие провалов.',
+              weaknesses: 'Нет ярких преимуществ, риск застоя.',
+              advice: 'Выберите направление для рывка – мастерство или маркетинг.',
+              slogan: '«Середина – не потолок. Выбери сторону и расти!»' },
+        ML: { title: 'Непрофессиональный продавец',
+              desc: 'Мастерство среднее, но продажи и коммуникация низкие. Не умеет заявить о себе.',
+              strengths: 'Способность качественно работать.',
+              weaknesses: 'Слабый маркетинг, неумение общаться.',
+              advice: 'Сфокусируйтесь на маркетинге – улучшите профиль, просите отзывы.',
+              slogan: '«Умение делать – половина успеха. Научись продавать – и взлетишь!»' },
+        LH: { title: 'Энтузиаст-новичок',
+              desc: 'Полон энтузиазма, отлично продаёт, но профессионализм и организация низкие. Качество страдает.',
+              strengths: 'Энергия, коммуникабельность, умение находить клиентов.',
+              weaknesses: 'Низкое качество, хаос, риск репутации.',
+              advice: 'Срочно учитесь профессии, наладьте тайм-менеджмент.',
+              slogan: '«Горящие глаза – хорошо, но горящие дедлайны – плохо. Учись ремеслу!»' },
+        LM: { title: 'Неустойчивый стартап',
+              desc: 'Продажи средние, профессионализм низкий. Бизнес на везении.',
+              strengths: 'База для продаж.',
+              weaknesses: 'Качество нестабильно, время не организовано.',
+              advice: 'Повышайте мастерство и дисциплину, выберите нишу.',
+              slogan: '«Продажи без качества – дом без фундамента. Строй основу!»' },
+        LL: { title: 'Тонущий',
+              desc: 'Все навыки низкие. Бизнес в кризисе или только начинается без системы.',
+              strengths: 'Потенциальная энергия.',
+              weaknesses: 'Полный хаос, отсутствие клиентов, финансовые проблемы.',
+              advice: 'Остановитесь, перезагрузитесь. Начните с нуля с наставником.',
+              slogan: '«Дно – отличная точка опоры, чтобы оттолкнуться и выплыть. Начни с малого!»' }
+    };
+
+    // ----- ТЕСТ 2. Микробизнес -----
+    const test2_skills = [
+        { name: 'Делегирование', short: 'Д', base: 0,
+          questions: makeQuestions([
+            'Я сам делаю всю важную работу, помощник только подносит. / Я постепенно передаю помощнику ключевые операции, обучая его.',
+            'Я часто переделываю работу помощника, потому что он сделал плохо. / Я заранее объясняю, как делать, и даю возможность учиться на ошибках.',
+            'Я не доверяю помощнику работать с клиентами. / Я разрешаю помощнику общаться с клиентами под моим контролем.',
+            'У меня нет инструкций для помощника, он делает, как понял. / Я прописал простые чек-листы и алгоритмы для типовых задач.',
+            'Если помощник ошибается, я сразу его увольняю. / Я разбираю ошибку, учу и даю второй шанс.'
+          ]) },
+        { name: 'Примитивный учёт', short: 'У', base: 0,
+          questions: makeQuestions([
+            'Я знаю примерно, сколько денег в кассе на сегодня. / У меня есть таблица (или сервис) учёта доходов/расходов за каждый день.',
+            'Я не считаю себестоимость продуктов/услуг. / Я знаю, сколько стоит каждый товар/ингредиент и какая наценка.',
+            'Остатки товара я определяю на глаз. / Я регулярно провожу инвентаризацию и веду учёт остатков.',
+            'Я не знаю, какие товары приносят больше прибыли. / Я анализирую продажи и знаю хиты и убыточные позиции.',
+            'Бухгалтерия для меня – тёмный лес, я полагаюсь на аутсорсера вслепую. / Я разбираюсь в базовых отчётах и контролирую своего бухгалтера.'
+          ]) },
+        { name: 'Базовый маркетинг', short: 'М', base: 0,
+          questions: makeQuestions([
+            'Реклама – это только вывеска и сарафанное радио. / Я регулярно запускаю простые акции (скидки, подарки за покупку).',
+            'Я не веду соцсети своей точки, некогда. / Я веду страницу в Instagram/ВК, публикую новости, отвечаю на отзывы.',
+            'Я никогда не спрашиваю клиентов, откуда они пришли. / Я спрашиваю, как клиенты узнали обо мне, и записываю.',
+            'У меня нет системы сбора отзывов. / Я прошу клиентов оставлять отзывы и публикую их.',
+            'Я не анализирую конкурентов. / Я регулярно смотрю, что делают конкуренты, и беру лучшее.'
+          ]) },
+        { name: 'Переговорные навыки', short: 'П', base: 0,
+          questions: makeQuestions([
+            'На переговорах с поставщиками я часто соглашаюсь на их условия. / Я готовлюсь к переговорам, знаю рыночные цены, умею просить скидки.',
+            'Если арендодатель повышает цену, я молча соглашаюсь. / Я обсуждаю повышение, аргументирую, ищу компромисс.',
+            'Я боюсь торговаться, мне неудобно. / Торг – нормальная часть бизнеса, я умею это делать.',
+            'В конфликте с партнёром я уступаю, чтобы не ссориться. / Я отстаиваю свои интересы, но ищу взаимовыгодное решение.',
+            'Я не умею говорить «нет» и беру невыгодные условия. / Я чётко обозначаю свои границы и готов уйти, если условия невыгодны.'
+          ]) },
+        { name: 'Стрессоустойчивость', short: 'С', base: 0,
+          questions: makeQuestions([
+            'Если случается проблема, я паникую или опускаю руки. / Я сохраняю спокойствие и ищу решение, даже когда всё валится.',
+            'Меня легко вывести из себя, если что-то идёт не по плану. / Я умею управлять эмоциями и быстро восстанавливаться.',
+            'Я работаю без выходных и уже выгорел. / Я соблюдаю баланс работы и отдыха, умею восстанавливать силы.',
+            'В многозадачности я теряю фокус и делаю ошибки. / Я умею расставлять приоритеты и сохранять продуктивность в стрессе.',
+            'Неудачи выбивают меня из колеи надолго. / Я отношусь к неудачам как к опыту и быстро иду дальше.'
+          ]) }
+    ];
+
+    const test2_profiles = {
+        HH: { title: 'Организованный лидер', desc: 'Высокое управление и рост. Помощники обучены, учёт идеален, маркетинг активен, переговоры успешны.', strengths: 'Система, рост, контроль.', weaknesses: 'При низкой стрессоустойчивости – перегрузка.', advice: 'Готовьтесь к переходу на уровень малого бизнеса.', slogan: '«Порядок и рост – твои крылья. Пора взлетать выше!»' },
+        HM: { title: 'Контролёр-консерватор', desc: 'Управление отличное, рост средний. Всё под контролем, но мало новых клиентов.', strengths: 'Стабильность, учёт, дисциплина.', weaknesses: 'Слабый маркетинг, неиспользованные возможности.', advice: 'Усильте маркетинг, изучите новые каналы, начните экспериментировать.', slogan: '«Контроль без роста – топтание на месте. Вдохни жизнь в маркетинг!»' },
+        HL: { title: 'Хозяин-затворник', desc: 'Управление высокое, рост низкий. Бизнес стоит на месте, вы не развиваетесь.', strengths: 'Отличный учёт, обученные помощники.', weaknesses: 'Отсутствие маркетинга, слабые переговоры.', advice: 'Срочно займитесь маркетингом и переговорами, возможно, наймите специалиста.', slogan: '«Затворничество – путь к забвению. Открой двери для новых клиентов!»' },
+        MH: { title: 'Растущий хаотик', desc: 'Управление среднее, рост высокий. Клиенты идут, но внутри бардак.', strengths: 'Активный маркетинг, умение договариваться.', weaknesses: 'Слабый учёт, необученные помощники, срывы.', advice: 'Наведите порядок в учёте и делегировании, иначе рост захлебнётся.', slogan: '«Рост без порядка – дорога в никуда. Залатай дыры в управлении!»' },
+        MM: { title: 'Середина', desc: 'Всё средне. Стабильно, но нет рывка.', strengths: 'Баланс.', weaknesses: 'Нет ярких преимуществ.', advice: 'Выберите приоритет – либо усиливать управление, либо рост.', slogan: '«Середина – не потолок. Сделай выбор и двигайся!»' },
+        ML: { title: 'Неумелый управленец', desc: 'Управление среднее, рост низкий. Кое-как справляетесь с учётом и помощниками, но не растёте.', strengths: 'Есть база управления.', weaknesses: 'Слабый маркетинг, переговоры.', advice: 'Заняться маркетингом, обучить помощника продажам.', slogan: '«Управлять без роста – крутить педали на месте. Включи скорость!»' },
+        LH: { title: 'Продавец без системы', desc: 'Рост высокий, но управление низкое. Помощники не обучены, учёта нет.', strengths: 'Отличные продажи, переговоры.', weaknesses: 'Хаос, ошибки, риск потери клиентов.', advice: 'Срочно внедрите учёт и регламенты, обучите помощников.', slogan: '«Продажи без системы – телега впереди лошади. Поставь порядок во главу!»' },
+        LM: { title: 'Начинающий', desc: 'Управление низкое, рост средний. Есть потенциал в продажах, но внутренняя кухня в хаосе.', strengths: 'Умение привлекать клиентов.', weaknesses: 'Отсутствие учёта, слабое делегирование.', advice: 'Учиться делегировать и вести учёт, нанять помощника.', slogan: '«Продажи – топливо, управление – руль. Садись за руль!»' },
+        LL: { title: 'Тонущий', desc: 'Всё низкое. Бизнес в кризисе.', strengths: 'Нет.', weaknesses: 'Полный хаос, нет клиентов, долги.', advice: 'Остановитесь, перезагрузитесь. Ищите наставника, начните с малого.', slogan: '«Из точки падения можно только взлететь. Начни с малого!»' }
+    };
+
+    // ----- ТЕСТ 3. Малый бизнес (используем навыки из теста 2 с другими названиями) -----
+    const test3_skills = [
+        { name: 'Системное делегирование', short: 'СД', base: 0, questions: test2_skills[0].questions },
+        { name: 'Построение бизнес-процессов', short: 'ПП', base: 0, questions: test2_skills[1].questions },
+        { name: 'Найм и увольнение', short: 'НУ', base: 0, questions: test2_skills[2].questions },
+        { name: 'Мотивация команды', short: 'МК', base: 0, questions: test2_skills[3].questions },
+        { name: 'Финансовое планирование', short: 'ФП', base: 0, questions: test2_skills[4].questions }
+    ];
+
+    const test3_profiles = {
+        HH: { title: 'Системный лидер', desc: 'Идеальный управленец: процессы отлажены, команда мотивирована, финансы под контролем.', strengths: 'Эффективность, лояльность, предсказуемость.', weaknesses: 'При низком ФП – риск неучтённых расходов.', advice: 'Масштабируйтесь, готовьте смену.', slogan: '«Система и люди – твоя армия. Пора завоёвывать новые рынки!»' },
+        HM: { title: 'Жёсткий системщик', desc: 'Процессы отличные, работа с людьми средняя. Команда функционирует, но не горит.', strengths: 'Порядок, дисциплина.', weaknesses: 'Недостаток мотивации, возможная текучка.', advice: 'Развивайте эмоциональный интеллект, внедрите нематериальную мотивацию.', slogan: '«Порядок без души – казарма. Добавь тепла!»' },
+        HL: { title: 'Робот-управленец', desc: 'Системы есть, но люди не мотивированы, высокая текучка.', strengths: 'Чёткие регламенты, контроль.', weaknesses: 'Холодная атмосфера, низкая лояльность.', advice: 'Учитесь слушать команду, проводите личные встречи, начните с малого – хвалите.', slogan: '«Роботы не удерживают таланты. Стань человеком для команды!»' },
+        MH: { title: 'Гибкий середняк', desc: 'С людьми отлично, процессы средние. Команда любит, но хаос мешает.', strengths: 'Мотивация, дух.', weaknesses: 'Неформализованные процессы, ошибки.', advice: 'Формализуйте регламенты, внедрите CRM и стандарты.', slogan: '«Душа компании нуждается в скелете. Строй системы!»' },
+        MM: { title: 'Золотая середина', desc: 'Всё средне. Стабильно, но нет прорыва.', strengths: 'Баланс.', weaknesses: 'Нет ярких преимуществ.', advice: 'Выберите фокус – либо усиление систем, либо работа с людьми.', slogan: '«Середина – зона комфорта. Выйди из неё!»' },
+        ML: { title: 'Добрый управленец', desc: 'Процессы средние, с людьми плохо. Команда не мотивирована.', strengths: '?', weaknesses: 'Низкая мотивация.', advice: 'Учитесь найму и мотивации, возможно, смените кадровую политику.', slogan: '«Доброта без системы – хаос. Наведи порядок в людях!»' },
+        LH: { title: 'Харизматичный хаос', desc: 'Отличные отношения, но нет систем. Бардак тормозит рост.', strengths: 'Дух, лояльность.', weaknesses: 'Отсутствие порядка.', advice: 'Внедрите регламенты, не теряя человечности.', slogan: '«Харизма без системы – фейерверк в болоте. Зажги свет!»' },
+        LM: { title: 'Начинающий лидер', desc: 'Есть потенциал в работе с людьми, но системы нет.', strengths: 'Задатки лидера.', weaknesses: 'Нет систем.', advice: 'Учитесь делегированию, процессам.', slogan: '«Люди идут за тобой – дай им карту!»' },
+        LL: { title: 'Кризисный', desc: 'Всё в минусе. Нужна реорганизация.', strengths: '?', weaknesses: 'Полный хаос.', advice: 'Привлеките консультанта, проведите аудит.', slogan: '«Кризис – время перемен. Начни с чистого листа!»' }
+    };
+
+    // ----- ТЕСТ 4. Средний бизнес -----
+    const test4_skills = [
+        { name: 'Стратегическое мышление', short: 'СМ', base: 0, questions: test2_skills[0].questions },
+        { name: 'Корпоративные финансы', short: 'КФ', base: 0, questions: test2_skills[1].questions },
+        { name: 'Управление эффективностью', short: 'УЭ', base: 0, questions: test2_skills[2].questions },
+        { name: 'Публичные коммуникации', short: 'ПК', base: 0, questions: test2_skills[3].questions },
+        { name: 'Эмоциональный интеллект', short: 'ЭИ', base: 0, questions: test2_skills[4].questions }
+    ];
+
+    const test4_profiles = {
+        HH: { title: 'Визионер-стратег', desc: 'Глубокое видение, финансовая грамотность, отличное управление и коммуникации. Компания готова к крупному бизнесу.', strengths: 'Стратегия, финансы, коммуникации.', weaknesses: 'При низком ЭИ – риски в отношениях с топами.', advice: 'Масштабируйтесь через M&A, готовьте команду.', slogan: '«Ты видишь будущее – строй его!»' },
+        HM: { title: 'Финансовый гений', desc: 'Сильные стратегия и финансы, но средние навыки управления людьми и коммуникаций.', strengths: 'Стратегия, финансы.', weaknesses: 'Слабые коммуникации.', advice: 'Развивайте эмоциональный интеллект, учитесь общаться с командой.', slogan: '«Цифры важны, но за ними – люди. Услышь их!»' },
+        HL: { title: 'Стратег-одиночка', desc: 'Видит далеко, считает хорошо, но не умеет управлять и общаться. Конфликты, демотивация.', strengths: 'Стратегия, финансы.', weaknesses: 'Нет управления, плохие коммуникации.', advice: 'Срочно учиться коммуникациям, нанять сильного COO.', slogan: '«Один в поле не воин. Научись вести за собой!»' },
+        MH: { title: 'Эффективный управленец', desc: 'Отлично управляет и общается, но стратегия и финансы средние.', strengths: 'Управление, коммуникации.', weaknesses: 'Недостаток стратегии и финансов.', advice: 'Усилить аналитику, привлечь финдиректора.', slogan: '«Ты – душа компании. Добавь ей мозгов!»' },
+        MM: { title: 'Середина', desc: 'Всё средне. Нужно выбрать приоритет.', strengths: 'Баланс.', weaknesses: 'Нет прорыва.', advice: 'Определите, что важнее – стратегия или люди, и инвестируйте туда.', slogan: '«Середина – зона риска. Сделай выбор!»' },
+        ML: { title: 'Коммуникатор без стратегии', desc: 'Общается хорошо, но стратегия и финансы слабы.', strengths: 'Коммуникации.', weaknesses: 'Стратегия, финансы.', advice: 'Учиться планированию, нанять стратега.', slogan: '«Красноречие без плана – ветер. Наполни паруса стратегией!»' },
+        LH: { title: 'Харизматик', desc: 'Отличные коммуникации и управление, но нет стратегии и финансового видения.', strengths: 'Коммуникации, управление.', weaknesses: 'Стратегия, финансы.', advice: 'Развивать стратегическое мышление, привлечь финдиректора.', slogan: '«Харизма без стратегии – фейерверк. Зажги прожектор!»' },
+        LM: { title: 'Начинающий стратег', desc: 'Есть потенциал в управлении, но стратегия слаба.', strengths: 'Управление.', weaknesses: 'Стратегия.', advice: 'Учиться мыслить долгосрочно, читать отчёты.', slogan: '«Дорога в будущее начинается с карты. Начерти её!»' },
+        LL: { title: 'Кризисный управленец', desc: 'Всё плохо. Нужна реструктуризация.', strengths: '?', weaknesses: 'Всё.', advice: 'Антикризисный менеджмент, внешний консультант.', slogan: '«Из пепла возрождается феникс. Начни сначала!»' }
+    };
+
+    // ----- ТЕСТ 5. Крупный бизнес -----
+    const test5_skills = [
+        { name: 'Стратегическое видение', short: 'СВ', base: 0, questions: test2_skills[0].questions },
+        { name: 'M&A (слияния и поглощения)', short: 'МА', base: 0, questions: test2_skills[1].questions },
+        { name: 'GR и лоббизм', short: 'ГР', base: 0, questions: test2_skills[2].questions },
+        { name: 'Управление советом директоров', short: 'УС', base: 0, questions: test2_skills[3].questions },
+        { name: 'Мышление собственника', short: 'МС', base: 0, questions: test2_skills[4].questions }
+    ];
+
+    const test5_profiles = {
+        HH: { title: 'Империятор', desc: 'Активно растёт через M&A и GR, отлично управляет советом и мыслит как собственник. Компания – лидер рынка.', strengths: 'M&A, GR, управление советом.', weaknesses: 'При низком СВ – риски стратегических ошибок.', advice: 'Готовьте преемников, ищите новые горизонты.', slogan: '«Империя – это ты. Оставь наследие!»' },
+        HM: { title: 'Завоеватель', desc: 'Внешний рост высок, внутреннее управление среднее. Хорошо покупает, но слабо управляет советом.', strengths: 'M&A, GR.', weaknesses: 'Управление советом.', advice: 'Развивать навыки работы с акционерами, усиливать корпоративное управление.', slogan: '«Завоевания требуют порядка в тылу. Укрепи управление!»' },
+        HL: { title: 'Агрессор', desc: 'Активно растёт, но внутри хаос: совет формален, собственник вмешивается в операционку.', strengths: 'M&A, GR.', weaknesses: 'Управление, мышление собственника.', advice: 'Делегировать, создать сильный совет директоров.', slogan: '«Агрессия без системы – самоубийство. Построй управление!»' },
+        MH: { title: 'Мудрый правитель', desc: 'Внутреннее управление отлично, внешний рост средний. Компания стабильна, но мало растёт.', strengths: 'Управление советом, мышление.', weaknesses: 'M&A, GR.', advice: 'Искать объекты для M&A, активизировать GR.', slogan: '«Мудрость требует движения. Иди вовне!»' },
+        MM: { title: 'Середина', desc: 'Сбалансирован, но нет ярких успехов. Выберите фокус.', strengths: 'Баланс.', weaknesses: 'Нет прорыва.', advice: 'Провести стратегическую сессию, определить приоритеты.', slogan: '«Баланс – хорошо, но рост – лучше. Сделай шаг!»' },
+        ML: { title: 'Консерватор', desc: 'Внутреннее управление слабо, внешний рост средний. Проблемы с советом и мышлением.', strengths: '?', weaknesses: 'Управление, мышление.', advice: 'Усилить корпоративное управление, развивать мышление собственника.', slogan: '«Консерватизм без порядка – застой. Наведи порядок внутри!»' },
+        LH: { title: 'Внешний игрок', desc: 'Внутреннее управление отличное, но внешний рост низкий. Не использует возможности M&A и GR.', strengths: 'Управление советом, мышление.', weaknesses: 'M&A, GR.', advice: 'Создать отдел M&A, работать с госорганами.', slogan: '«Ты отлично управляешь домом. Пора покупать соседние!»' },
+        LM: { title: 'Начинающий акционер', desc: 'Есть базовое управление, но нет внешнего роста и стратегического видения.', strengths: 'Управление.', weaknesses: 'Стратегия, M&A, GR.', advice: 'Учиться стратегии, искать партнёров для роста.', slogan: '«Акционер – не просто владелец. Стань архитектором империи!»' },
+        LL: { title: 'Стагнация', desc: 'Все навыки низкие. Бизнес в кризисе.', strengths: '?', weaknesses: 'Всё.', advice: 'Реструктуризация, привлечение антикризисной команды.', slogan: '«Стагнация – смерть. Время перемен!»' }
+    };
+
+    // Собираем все тесты в массив
+    const tests = [
+        { name: 'Самозанятый', skills: test1_skills, profiles: test1_profiles, axisX: [0,2], axisY: [1,4], moderator: 3, controlQs: createControlQuestions('solo') },
+        { name: 'Микробизнес', skills: test2_skills, profiles: test2_profiles, axisX: [0,1], axisY: [2,3], moderator: 4, controlQs: createControlQuestions('micro') },
+        { name: 'Малый бизнес', skills: test3_skills, profiles: test3_profiles, axisX: [0,1], axisY: [2,3], moderator: 4, controlQs: createControlQuestions('small') },
+        { name: 'Средний бизнес', skills: test4_skills, profiles: test4_profiles, axisX: [0,1], axisY: [2,3], moderator: 4, controlQs: createControlQuestions('medium') },
+        { name: 'Крупный бизнес', skills: test5_skills, profiles: test5_profiles, axisX: [1,2], axisY: [3,4], moderator: 0, controlQs: createControlQuestions('large') }
+    ];
+
+    // ---------- 3. СОСТОЯНИЕ ИГРЫ ----------
+    let currentTestIndex = -1;
+    let currentSkillIdx = 0;      // 0..4
+    let currentQIdx = 0;           // 0..4
+    let controlMode = false;
+    let controlIdx = 0;
+    let timerInterval = null;
+    let timeLeft = 30;
+    let questionLocked = false;
+    let awaitingNext = false;
+    let controlK = 0;              // количество выборов А в контрольных
+    let startTime = null;          // для замера общего времени
+
+    // DOM-элементы
+    const testButtons = document.querySelectorAll('.test-btn');
+    const skillsNamesDiv = document.getElementById('skillsNames');
+    const levelName = document.getElementById('levelName');
+    const levelDesc = document.getElementById('levelDescription');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerFill = document.getElementById('timerFill');
+    const progressFill = document.getElementById('progressFill');
+    const progressPercent = document.getElementById('progressPercent');
+    const actionsContainer = document.getElementById('actionsContainer');
+    const resultMsg = document.getElementById('resultMessage');
+    const nextBtn = document.getElementById('nextBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const welcomeModal = document.getElementById('welcomeModal');
+    const startModalBtn = document.getElementById('startModalBtn');
+
+    // ---------- 4. ФУНКЦИИ ----------
+    function clearTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = null;
+    }
+
+    function selectTest(idx) {
+        currentTestIndex = idx;
+        resetTestState();
+        testButtons.forEach((btn, i) => {
+            btn.classList.toggle('selected', i === idx);
+        });
+        // Показываем названия навыков
+        const test = tests[currentTestIndex];
+        skillsNamesDiv.innerHTML = test.skills.map(s => `<span class="skill-tag">${s.name}</span>`).join(' ');
+        startTime = Date.now();
+        startCurrentQuestion();
+    }
+
+    function resetTestState() {
+        clearTimer();
+        if (currentTestIndex !== -1) {
+            tests[currentTestIndex].skills.forEach(s => s.base = 0);
+        }
+        controlK = 0;
+        currentSkillIdx = 0;
+        currentQIdx = 0;
+        controlMode = false;
+        controlIdx = 0;
+        questionLocked = false;
+        awaitingNext = false;
+        nextBtn.classList.add('hidden');
+        resultMsg.innerText = '';
+        progressFill.style.width = '0%';
+        progressPercent.innerText = '0%';
+    }
+
+    function startCurrentQuestion() {
+        questionLocked = false;
+        awaitingNext = false;
+        nextBtn.classList.add('hidden');
+
+        if (!controlMode && currentSkillIdx >= 5) {
+            controlMode = true;
+            controlIdx = 0;
+        }
+
+        if (controlMode) {
+            if (controlIdx >= tests[currentTestIndex].controlQs.length) {
+                finishTest();
+                return;
+            }
+            showControlQuestion(controlIdx);
+        } else {
+            if (currentSkillIdx < 5 && currentQIdx < 5) {
+                showMainQuestion(currentSkillIdx, currentQIdx);
+            } else {
+                controlMode = true;
+                controlIdx = 0;
+                startCurrentQuestion();
+                return;
+            }
+        }
+
+        timeLeft = 30;
+        updateTimerDisplay();
+        timerFill.style.width = '100%';
+        startTimer();
+    }
+
+    function startTimer() {
+        clearTimer();
+        timerInterval = setInterval(() => {
+            if (questionLocked) return;
+            timeLeft -= 1;
+            updateTimerDisplay();
+            timerFill.style.width = (timeLeft / 30 * 100) + '%';
+            if (timeLeft <= 0) {
+                clearTimer();
+                questionLocked = true;
+                document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
+                // Диалог: продолжить или завершить
+                let userChoice = confirm('Время на вопрос истекло. Продолжить тест? (Нажмите ОК чтобы продолжить, Отмена чтобы завершить)');
+                if (userChoice) {
+                    // продолжить (пропускаем вопрос)
+                    awaitingNext = true;
+                    nextBtn.classList.remove('hidden');
+                } else {
+                    // завершить досрочно
+                    finishTest();
+                }
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        timerDisplay.innerText = `⏳ ${timeLeft}с`;
+    }
+
+    function showMainQuestion(skillIdx, qIdx) {
+        const test = tests[currentTestIndex];
+        const skill = test.skills[skillIdx];
+        const q = skill.questions[qIdx];
+        levelName.innerText = `${test.name} · ${skill.name}`;
+        levelDesc.innerText = `Вопрос ${skillIdx*5 + qIdx + 1} из 25`;
+        actionsContainer.innerHTML = `
+            <button class="action-btn" data-val="0">${q.a}</button>
+            <button class="action-btn" data-val="1">${q.b}</button>
+        `;
+        attachHandlers();
+    }
+
+    function showControlQuestion(idx) {
+        const test = tests[currentTestIndex];
+        const cq = test.controlQs[idx];
+        levelName.innerText = `${test.name} · Контрольный ${idx+1}/6`;
+        levelDesc.innerText = cq.a + ' / ' + cq.b;
+        actionsContainer.innerHTML = `
+            <button class="action-btn" data-val="0">${cq.a}</button>
+            <button class="action-btn" data-val="1">${cq.b}</button>
+        `;
+        attachHandlers();
+    }
+
+    function attachHandlers() {
         document.querySelectorAll('.action-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                if (waitForNext || gameFinished) return;
-                const idx = e.currentTarget.dataset.optionIndex;
-                if (idx !== undefined) handleAnswer(parseInt(idx));
+                if (questionLocked) return;
+                const val = parseInt(e.target.dataset.val);
+                clearTimer();
+                questionLocked = true;
+                // учёт баллов
+                if (!controlMode) {
+                    tests[currentTestIndex].skills[currentSkillIdx].base += val;
+                } else {
+                    if (val === 0) controlK++;
+                }
+                document.querySelectorAll('.action-btn').forEach(btn => btn.disabled = true);
+                awaitingNext = true;
+                nextBtn.classList.remove('hidden');
             });
         });
     }
 
-    function handleAnswer(optionIndex) {
-        if (waitForNext || gameFinished) return;
-
-        const q = questions[currentQuestionIndex];
-        const opt = q.options[optionIndex];
-        const skill = q.skill;
-
-        skills[skill] = skills[skill] + opt.effect;
-        collectedCards.push(opt.effect === 1 ? '✅' : (opt.effect === 0 ? '🔸' : '❌'));
-
-        document.getElementById('resultMessage').innerText = '';
-
-        updateSkillsUI();
-        updateCardsUI();
-
-        document.querySelectorAll('.action-btn').forEach(btn => { btn.disabled = true; });
-
-        if (currentQuestionIndex === questions.length - 1) {
-            gameFinished = true;
-            showFinalResult();
-            document.getElementById('nextLevelBtn').classList.add('hidden');
-            updateLevelDisplay();
-            renderActions();
+    nextBtn.addEventListener('click', () => {
+        if (!awaitingNext) return;
+        if (!controlMode) {
+            currentQIdx++;
+            if (currentQIdx >= 5) {
+                currentQIdx = 0;
+                currentSkillIdx++;
+            }
         } else {
-            waitForNext = true;
-            document.getElementById('nextLevelBtn').classList.remove('hidden');
+            controlIdx++;
         }
-    }
-
-    function goToNextQuestion() {
-        if (!waitForNext || gameFinished) return;
-        currentQuestionIndex++;
-        waitForNext = false;
-        document.getElementById('nextLevelBtn').classList.add('hidden');
-        updateLevelDisplay();
-        renderActions();
-        document.getElementById('resultMessage').innerText = '';
-    }
-
-    function resetGame() {
-        skills = { strategic: 0, finance: 0, delegate: 0, leader: 0 };
-        collectedCards = [];
-        currentQuestionIndex = 0;
-        gameFinished = false;
-        waitForNext = false;
-
-        questions = shuffleQuestionsAndAnswers();
-
-        updateSkillsUI();
-        updateCardsUI();
-        document.getElementById('resultMessage').innerText = '';
-        document.getElementById('nextLevelBtn').classList.add('hidden');
-        document.getElementById('onboardingMsg').style.display = 'flex';
-        updateLevelDisplay();
-        renderActions();
-        setRandomAdvice();
-    }
-
-    // Модальное окно
-    const modal = document.getElementById('welcomeModal');
-    const startBtn = document.getElementById('startGameBtn');
-
-    window.addEventListener('load', () => {
-        modal.style.display = 'flex';
+        updateProgress();
+        startCurrentQuestion();
     });
 
-    startBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-        resetGame();
+    function updateProgress() {
+        let totalQuestions = 31; // 25+6
+        let answered = (currentSkillIdx*5 + currentQIdx) + (controlMode ? controlIdx + 25 : 0);
+        // более точный подсчёт: количество отвеченных = (текущий индекс в основном режиме) + (если контрольный)
+        let answeredCount = 0;
+        if (controlMode) {
+            answeredCount = 25 + controlIdx;
+        } else {
+            answeredCount = currentSkillIdx*5 + currentQIdx;
+        }
+        let percent = Math.round(answeredCount / totalQuestions * 100);
+        progressFill.style.width = percent + '%';
+        progressPercent.innerText = percent + '%';
+    }
+
+    function finishTest() {
+        clearTimer();
+        nextBtn.classList.add('hidden');
+        actionsContainer.innerHTML = '';
+
+        const test = tests[currentTestIndex];
+        const skills = test.skills;
+
+        // вычисляем оси
+        const xAvg = (skills[test.axisX[0]].base + skills[test.axisX[1]].base) / 2;
+        const yAvg = (skills[test.axisY[0]].base + skills[test.axisY[1]].base) / 2;
+        const getLevel = (avg) => {
+            if (avg <= 2.0) return 'L';
+            if (avg <= 3.5) return 'M';
+            return 'H';
+        };
+        const xLev = getLevel(xAvg);
+        const yLev = getLevel(yAvg);
+        const profileKey = xLev + yLev;
+        const profile = test.profiles[profileKey] || test.profiles.MM;
+
+        const modVal = skills[test.moderator].base;
+        const modLev = getLevel(modVal);
+
+        // Контрольный балл и скорость
+        let honestyNote = '';
+        if (controlK <= 1) honestyNote = 'Высокая самокритичность, ответы достоверны.';
+        else if (controlK <= 3) honestyNote = 'Умеренная идеализация, выводы с осторожностью.';
+        else honestyNote = 'Высокая склонность к самообману; результаты завышены. Рекомендуется обсудить с коучем.';
+
+        // Проверка времени
+        let timeNote = '';
+        if (startTime) {
+            const elapsedSeconds = (Date.now() - startTime) / 1000;
+            if (elapsedSeconds < 90) { // меньше 1.5 минут на 31 вопрос — очень быстро
+                timeNote = '\n\n⚠️ ПОДОЗРЕНИЕ: Тест пройден слишком быстро (менее 90 секунд). Возможно, ответы были необдуманными. Рекомендуем пройти тест ещё раз, уделяя больше времени каждому вопросу.';
+            }
+        }
+
+        // Формируем результат без цифр
+        const resultText = `🧩 ВАШ ПРОФИЛЬ: ${profile.title}\n\n${profile.desc}\n\n🔹 Сильные стороны: ${profile.strengths}\n🔸 Слабые стороны: ${profile.weaknesses}\n💡 Рекомендация: ${profile.advice}\n🏆 ${profile.slogan}\n\n${honestyNote}${timeNote}`;
+
+        resultMsg.innerText = resultText;
+        levelName.innerText = '✅ ТЕСТ ЗАВЕРШЁН';
+        levelDesc.innerText = `${test.name} · профиль определён`;
+    }
+
+    // Обработчики
+    startModalBtn.addEventListener('click', () => {
+        welcomeModal.style.display = 'none';
     });
 
-    document.getElementById('resetGameBtn').addEventListener('click', () => {
-        resetGame();
+    testButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.target.dataset.test);
+            selectTest(idx);
+        });
     });
 
-    document.getElementById('nextLevelBtn').addEventListener('click', goToNextQuestion);
-    document.getElementById('newAdviceBtn').addEventListener('click', setRandomAdvice);
+    resetBtn.addEventListener('click', () => {
+        if (currentTestIndex !== -1) {
+            selectTest(currentTestIndex);
+        }
+    });
+
+    welcomeModal.style.display = 'flex';
 })();
 </script>
 </body>
