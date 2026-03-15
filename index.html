@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
-    <title>Предприниматель: 5 тестов (чистая диагностика)</title>
+    <!-- Запрет кэширования -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Предприниматель: 5 тестов (без кэша)</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -647,8 +651,6 @@
 
     function updateProgress() {
         let totalQuestions = 31; // 25+6
-        let answered = (currentSkillIdx*5 + currentQIdx) + (controlMode ? controlIdx + 25 : 0);
-        // более точный подсчёт: количество отвеченных = (текущий индекс в основном режиме) + (если контрольный)
         let answeredCount = 0;
         if (controlMode) {
             answeredCount = 25 + controlIdx;
@@ -680,9 +682,6 @@
         const yLev = getLevel(yAvg);
         const profileKey = xLev + yLev;
         const profile = test.profiles[profileKey] || test.profiles.MM;
-
-        const modVal = skills[test.moderator].base;
-        const modLev = getLevel(modVal);
 
         // Контрольный балл и скорость
         let honestyNote = '';
